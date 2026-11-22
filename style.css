@@ -1,62 +1,101 @@
 :root {
-  --bg: #ffffff;
-  --metal-dark: #161d29;
-  --metal-mid: #283347;
-  --metal-edge: #d8e1ec;
-  --screen-bg: #0a101b;
-  --shadow-soft: rgba(15, 23, 42, 0.12);
-  --shadow-deep: rgba(15, 23, 42, 0.22);
+  /* Latar Belakang Netral & Bersih (Tidak Warna-Warni) */
+  --bg-main: #f8fafc;
+  --bg-soft: #f1f5f9;
 
-  /* Warna Default (1. Cyan / Biru Elektrik) */
-  --accent: #00d8ff;
-  --accent-bright: #a5f6ff;
+  /* Warna Clay Dasar */
+  --clay-white: #ffffff;
+  --clay-ink: #1e1b4b;
+  --clay-muted: #64748b;
+  --screen-dark: #191636;
+  --screen-deep: #0f0d24;
+
+  /* Tema Default Robot: Sky Candy (Warna Robot & Perpindahan Warnanya Dipertahankan) */
+  --accent: #38bdf8;
+  --accent-bright: #bae6fd;
   --accent-deep: #0284c7;
-  --accent-rgb: 0, 216, 255;
-  --screen-tint: #112238;
+  --accent-rgb: 56, 189, 248;
+  --nose-bg: #ff6b9d;
+  --nose-deep: #e11d48;
+  --cheek-color: #fda4af;
 
+  /* Variabel Pandangan Mata */
   --look-x: 0;
   --look-y: 0;
+
+  /* Clay Shadows */
+  --clay-shadow-lg:
+    0 20px 38px rgba(15, 23, 42, 0.1),
+    0 8px 16px rgba(15, 23, 42, 0.06),
+    inset 0 8px 14px rgba(255, 255, 255, 0.95),
+    inset 0 -10px 18px rgba(148, 163, 184, 0.22);
+
+  --clay-shadow-md:
+    0 14px 26px rgba(15, 23, 42, 0.1),
+    0 5px 10px rgba(15, 23, 42, 0.05),
+    inset 0 5px 9px rgba(255, 255, 255, 0.9),
+    inset 0 -7px 12px rgba(148, 163, 184, 0.22);
+
+  --clay-shadow-sm:
+    0 8px 18px rgba(15, 23, 42, 0.08),
+    inset 0 4px 6px rgba(255, 255, 255, 0.95),
+    inset 0 -5px 8px rgba(148, 163, 184, 0.18);
 }
 
-/* 5 Tema Warna Robot */
-.robot-face[data-color="cyan"] {
-  --accent: #00d8ff;
-  --accent-bright: #a5f6ff;
+/* 5 Tema Warna Claymorphism Warna-Warni (Di-set di body & .robot-face agar button yang keluar otomatis mengikuti warna hidung saat ini) */
+body[data-color="sky"],
+.robot-face[data-color="sky"] {
+  --accent: #38bdf8;
+  --accent-bright: #bae6fd;
   --accent-deep: #0284c7;
-  --accent-rgb: 0, 216, 255;
-  --screen-tint: #112238;
+  --accent-rgb: 56, 189, 248;
+  --nose-bg: #ff6b9d;
+  --nose-deep: #e11d48;
+  --cheek-color: #fda4af;
 }
 
-.robot-face[data-color="emerald"] {
-  --accent: #00e676;
-  --accent-bright: #b9f6ca;
+body[data-color="mint"],
+.robot-face[data-color="mint"] {
+  --accent: #34d399;
+  --accent-bright: #a7f3d0;
   --accent-deep: #059669;
-  --accent-rgb: 0, 230, 118;
-  --screen-tint: #0f291e;
+  --accent-rgb: 52, 211, 153;
+  --nose-bg: #fbbf24;
+  --nose-deep: #d97706;
+  --cheek-color: #fda4af;
 }
 
-.robot-face[data-color="amber"] {
-  --accent: #ffab00;
-  --accent-bright: #ffe57f;
+body[data-color="sunny"],
+.robot-face[data-color="sunny"] {
+  --accent: #fbbf24;
+  --accent-bright: #fde68a;
   --accent-deep: #d97706;
-  --accent-rgb: 255, 171, 0;
-  --screen-tint: #2b2110;
+  --accent-rgb: 251, 191, 36;
+  --nose-bg: #fb7185;
+  --nose-deep: #e11d48;
+  --cheek-color: #fdba74;
 }
 
-.robot-face[data-color="crimson"] {
-  --accent: #ff2a6d;
-  --accent-bright: #ff9ebb;
-  --accent-deep: #be123c;
-  --accent-rgb: 255, 42, 109;
-  --screen-tint: #2d121e;
+body[data-color="berry"],
+.robot-face[data-color="berry"] {
+  --accent: #fb7185;
+  --accent-bright: #fecdd3;
+  --accent-deep: #e11d48;
+  --accent-rgb: 251, 113, 133;
+  --nose-bg: #a78bfa;
+  --nose-deep: #7c3aed;
+  --cheek-color: #f472b6;
 }
 
-.robot-face[data-color="violet"] {
-  --accent: #b388ff;
-  --accent-bright: #e6ceff;
+body[data-color="grape"],
+.robot-face[data-color="grape"] {
+  --accent: #a78bfa;
+  --accent-bright: #ddd6fe;
   --accent-deep: #7c3aed;
-  --accent-rgb: 179, 136, 255;
-  --screen-tint: #1f1433;
+  --accent-rgb: 167, 139, 250;
+  --nose-bg: #34d399;
+  --nose-deep: #059669;
+  --cheek-color: #f9a8d4;
 }
 
 *,
@@ -70,87 +109,817 @@
 html,
 body {
   width: 100%;
-  height: 100%;
-  background-color: var(--bg);
+  height: 100dvh;
   overflow: hidden;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  font-family: "Nunito", "Fredoka", "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--clay-ink);
+  background: radial-gradient(circle at 50% 42%, #ffffff 0%, var(--bg-main) 62%, var(--bg-soft) 100%);
+  transition: background 0.55s ease, color 0.45s ease;
 }
 
-body {
+/* ==================== DARK MODE OTOMATIS SAAT ROBOT TIDUR ==================== */
+body.is-dark-sleep {
+  --bg-main: #0b1120;
+  --bg-soft: #060913;
+  --clay-ink: #f8fafc;
+  --clay-muted: #94a3b8;
+  background: radial-gradient(circle at 50% 42%, #1e293b 0%, #0f172a 55%, #050811 100%);
+}
+
+body.is-dark-sleep .bg-blob {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  box-shadow:
+    inset 0 8px 16px rgba(255, 255, 255, 0.12),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.65),
+    0 16px 32px rgba(0, 0, 0, 0.45);
+  opacity: 0.65;
+}
+
+body.is-dark-sleep .brand-title {
+  color: #f8fafc;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.65);
+}
+
+body.is-dark-sleep .brand-subtitle {
+  color: #94a3b8;
+}
+
+/* Bingkai Mata & Mulut di Dark Mode */
+body.is-dark-sleep .eye-rim,
+body.is-dark-sleep .mouth-rim {
+  background: linear-gradient(145deg, #334155 0%, #1e293b 62%, #0f172a 100%);
+  border-color: #475569;
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.55),
+    0 6px 14px rgba(0, 0, 0, 0.4),
+    inset 0 6px 10px rgba(255, 255, 255, 0.16),
+    inset 0 -10px 16px rgba(0, 0, 0, 0.65);
+}
+
+/* Kelopak Mata di Dark Mode (Menutup Rapat & Menyatu di Tengah Tanpa Celah Aneh) */
+body.is-dark-sleep .eyelid-top {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+  border-bottom: 3px solid var(--accent);
+  border-radius: 0;
+  box-shadow: inset 0 4px 8px rgba(255, 255, 255, 0.14);
+}
+
+body.is-dark-sleep .eyelid-bottom {
+  background: linear-gradient(0deg, #334155 0%, #1e293b 100%);
+  border-top: none;
+  border-radius: 0;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Hidung & Antena di Dark Mode (Hilangkan Garis Putih Silau) */
+body.is-dark-sleep .nose {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 16px 28px rgba(0, 0, 0, 0.55),
+    0 4px 10px rgba(225, 29, 72, 0.25),
+    inset 0 5px 9px rgba(255, 255, 255, 0.45),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.45);
+}
+
+body.is-dark-sleep .antenna-stem {
+  background: linear-gradient(90deg, #475569, #334155);
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.2);
+}
+
+body.is-dark-sleep .clay-eyebrow {
+  background: linear-gradient(145deg, #64748b, #334155);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    inset 0 3px 5px rgba(255, 255, 255, 0.22),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Badge Hover Fitur (Karya, Profil, Kontak) di Dark Mode */
+body.is-dark-sleep .feature-badge {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  color: #e0f2fe;
+  border: 1.5px solid #38bdf8;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.55),
+    0 0 12px rgba(56, 189, 248, 0.28),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15);
+}
+
+/* Tombol-Tombol yang Jatuh di Dark Mode (Tetap Mengikuti Warna Hidung Saat Ini) */
+body.is-dark-sleep .clay-drop-btn {
+  background: radial-gradient(circle at 28% 24%, #ffffff 0%, var(--nose-bg) 36%, var(--nose-deep) 100%);
+  border-color: rgba(255, 255, 255, 0.78);
+  color: #ffffff;
+  box-shadow:
+    0 20px 36px rgba(0, 0, 0, 0.58),
+    0 6px 14px rgba(0, 0, 0, 0.4),
+    inset 0 6px 10px rgba(255, 255, 255, 0.65),
+    inset 0 -9px 15px rgba(0, 0, 0, 0.38);
+}
+
+body.is-dark-sleep .clay-drop-btn:hover {
+  filter: brightness(1.08);
+  border-color: #ffffff;
+}
+
+body.is-dark-sleep .drop-btn-tag {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.is-dark-sleep .drop-btn-label {
+  color: #ffffff;
+}
+
+body.is-dark-sleep .zzz-char {
+  color: #bae6fd;
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  border-color: #38bdf8;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(56, 189, 248, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.25);
+}
+
+/* Modal Kartu Detail Portofolio di Dark Mode (Kontras Tinggi & Terbaca Jelas) */
+body.is-dark-sleep .clay-modal-backdrop {
+  background: rgba(5, 8, 17, 0.68);
+}
+
+body.is-dark-sleep .clay-modal-card {
+  background: linear-gradient(155deg, #1e293b 0%, #0f172a 100%);
+  border-color: #334155;
+  box-shadow:
+    0 30px 64px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(56, 189, 248, 0.2),
+    inset 0 8px 16px rgba(255, 255, 255, 0.1),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.65);
+}
+
+body.is-dark-sleep .modal-badge {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #38bdf8;
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.12);
+}
+
+body.is-dark-sleep .modal-close-btn {
+  background: linear-gradient(145deg, #334155, #1e293b);
+  border-color: #475569;
+  color: #f8fafc;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.18);
+}
+
+body.is-dark-sleep .modal-icon-hero {
+  background: linear-gradient(145deg, #334155, #0f172a);
+  color: #38bdf8;
+  border: 2px solid #475569;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.45),
+    inset 0 3px 6px rgba(255, 255, 255, 0.15);
+}
+
+body.is-dark-sleep .modal-title {
+  color: #f8fafc;
+}
+
+body.is-dark-sleep .modal-desc {
+  color: #cbd5e1;
+}
+
+body.is-dark-sleep .modal-tag {
+  background: #0f172a;
+  color: #bae6fd;
+  border: 1.5px solid #334155;
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 3px rgba(255, 255, 255, 0.08);
+}
+
+body.is-dark-sleep .modal-extra-box {
+  background: rgba(15, 23, 42, 0.78);
+  color: #e2e8f0;
+  border: 1.5px solid #334155;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.55);
+}
+
+body.is-dark-sleep .modal-cta-btn {
+  border-color: #7dd3fc;
+  box-shadow:
+    0 12px 24px rgba(2, 132, 199, 0.45),
+    inset 0 3px 6px rgba(255, 255, 255, 0.55),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ==================== BACKGROUND CLAY WORLD (MONOCHROME / NETRAL) ==================== */
+.bg-clay-world {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.75;
+  background: linear-gradient(145deg, #ffffff 0%, #e2e8f0 100%);
+  box-shadow:
+    inset 0 8px 16px rgba(255, 255, 255, 0.95),
+    inset 0 -10px 18px rgba(148, 163, 184, 0.25),
+    0 16px 32px rgba(15, 23, 42, 0.05);
+  animation: floatSlow 9s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 130px;
+  height: 130px;
+  top: 9%;
+  left: 5%;
+}
+
+.blob-2 {
+  width: 96px;
+  height: 96px;
+  top: 13%;
+  right: 7%;
+  animation-delay: -2.5s;
+}
+
+.blob-3 {
+  width: 110px;
+  height: 110px;
+  bottom: 14%;
+  left: 8%;
+  animation-delay: -4s;
+}
+
+.blob-4 {
+  width: 120px;
+  height: 120px;
+  bottom: 12%;
+  right: 6%;
+  animation-delay: -1.5s;
+}
+
+@keyframes floatSlow {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(0, -16px, 0) rotate(10deg); }
+}
+
+/* ==================== LAYOUT 100VH ==================== */
+.portfolio-viewport {
+  position: relative;
+  z-index: 60;
+  width: 100%;
+  height: 100dvh;
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  padding: clamp(12px, 2vh, 22px) clamp(14px, 2.5vw, 32px);
+  overflow: hidden;
+  pointer-events: none;
 }
 
-/* Hanya mata, hidung, dan mulut langsung di atas latar putih */
-.robot-face {
+/* ==================== GERBANG ABSTRAK CLAYMORPHISM & KOMPONEN ROBOT MENYATU ==================== */
+.abstract-clay-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.abstract-clay-gate.is-hidden {
+  display: none;
+}
+
+/* 4 Keping Blob Abstrak Clay Tebal (Biru, Putih, Hitam) yang Menutup Layar */
+.gate-blob-piece {
+  position: absolute;
+  will-change: transform, border-radius;
+  transition:
+    transform 1.05s cubic-bezier(0.65, 0, 0.25, 1),
+    opacity 0.9s ease;
+}
+
+/* Kiri Atas: Blob Putih Clay Empuk Super Tebal */
+.gate-blob-tl {
+  top: -18vh;
+  left: -14vw;
+  width: 72vw;
+  height: 74vh;
+  border-radius: 42% 58% 64% 36% / 48% 42% 58% 52%;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 58%, #cbd5e1 100%);
+  border: 6px solid #ffffff;
+  box-shadow:
+    0 32px 64px rgba(15, 23, 42, 0.28),
+    inset 0 18px 28px rgba(255, 255, 255, 1),
+    inset 0 -24px 36px rgba(100, 116, 139, 0.42);
+  animation: morphBlobTL 7s ease-in-out infinite alternate;
+}
+
+/* Kanan Atas: Blob Biru Elektrik Clay 3D */
+.gate-blob-tr {
+  top: -16vh;
+  right: -14vw;
+  width: 70vw;
+  height: 76vh;
+  border-radius: 56% 44% 38% 62% / 52% 60% 40% 48%;
+  background: radial-gradient(circle at 35% 30%, #bae6fd 0%, #38bdf8 45%, #0284c7 85%, #0369a1 100%);
+  border: 6px solid #e0f2fe;
+  box-shadow:
+    0 34px 70px rgba(2, 132, 199, 0.38),
+    inset 0 20px 32px rgba(255, 255, 255, 0.82),
+    inset 0 -26px 40px rgba(12, 74, 110, 0.65);
+  animation: morphBlobTR 8s ease-in-out infinite alternate;
+}
+
+/* Kiri Bawah: Blob Hitam/Ink Clay Tebal */
+.gate-blob-bl {
+  bottom: -18vh;
+  left: -12vw;
+  width: 70vw;
+  height: 74vh;
+  border-radius: 62% 38% 48% 52% / 42% 56% 44% 58%;
+  background: radial-gradient(circle at 38% 32%, #334155 0%, #0f172a 58%, #050811 100%);
+  border: 6px solid #475569;
+  box-shadow:
+    0 36px 72px rgba(5, 8, 17, 0.65),
+    inset 0 18px 28px rgba(255, 255, 255, 0.24),
+    inset 0 -26px 40px rgba(0, 0, 0, 0.85);
+  animation: morphBlobBL 7.5s ease-in-out infinite alternate;
+}
+
+/* Kanan Bawah: Blob Putih & Biru Muda Clay Empuk */
+.gate-blob-br {
+  bottom: -18vh;
+  right: -14vw;
+  width: 72vw;
+  height: 74vh;
+  border-radius: 46% 54% 58% 42% / 58% 44% 56% 42%;
+  background: linear-gradient(145deg, #ffffff 0%, #e0f2fe 55%, #7dd3fc 100%);
+  border: 6px solid #ffffff;
+  box-shadow:
+    0 32px 64px rgba(15, 23, 42, 0.32),
+    inset 0 18px 30px rgba(255, 255, 255, 1),
+    inset 0 -24px 36px rgba(2, 132, 199, 0.35);
+  animation: morphBlobBR 8.5s ease-in-out infinite alternate;
+}
+
+@keyframes morphBlobTL {
+  0% { border-radius: 42% 58% 64% 36% / 48% 42% 58% 52%; }
+  100% { border-radius: 54% 46% 52% 48% / 40% 56% 44% 60%; }
+}
+
+@keyframes morphBlobTR {
+  0% { border-radius: 56% 44% 38% 62% / 52% 60% 40% 48%; }
+  100% { border-radius: 44% 56% 50% 50% / 60% 44% 56% 40%; }
+}
+
+@keyframes morphBlobBL {
+  0% { border-radius: 62% 38% 48% 52% / 42% 56% 44% 58%; }
+  100% { border-radius: 48% 52% 60% 40% / 54% 42% 58% 46%; }
+}
+
+@keyframes morphBlobBR {
+  0% { border-radius: 46% 54% 58% 42% / 58% 44% 56% 42%; }
+  100% { border-radius: 58% 42% 46% 54% / 46% 58% 42% 54%; }
+}
+
+/* Kubah Blob Abstrak Hitam-Biru-Putih di Tengah Gate */
+.gate-center-blob {
+  position: relative;
+  z-index: 10;
+  width: clamp(248px, 31vw, 326px);
+  padding: clamp(26px, 3.4vw, 36px) clamp(22px, 2.8vw, 30px);
+  border-radius: 46% 54% 50% 50% / 52% 45% 55% 48%;
+  background: radial-gradient(circle at 38% 28%, #1e293b 0%, #0f172a 62%, #050811 100%);
+  border: 6px solid #ffffff;
+  box-shadow:
+    0 28px 60px rgba(5, 8, 17, 0.55),
+    0 0 0 12px rgba(56, 189, 248, 0.32),
+    inset 0 14px 24px rgba(255, 255, 255, 0.22),
+    inset 0 -18px 30px rgba(0, 0, 0, 0.85);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(22px, 4.2vh, 42px);
-  padding: 24px;
-  transform: translate3d(calc(var(--look-x) * 4px), calc(var(--look-y) * 3px), 0);
-  transition: transform 0.18s ease-out;
+  gap: 8px;
+  text-align: center;
+  animation: centerBlobWobble 5s ease-in-out infinite alternate;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
 }
 
-.brand-logo {
-  display: block;
-  max-width: clamp(110px, 16vw, 180px);
-  max-height: clamp(44px, 7.5vh, 76px);
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: clamp(4px, 1vh, 12px);
+@keyframes centerBlobWobble {
+  0% {
+    border-radius: 46% 54% 50% 50% / 52% 45% 55% 48%;
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  100% {
+    border-radius: 54% 46% 47% 53% / 46% 54% 46% 54%;
+    transform: translateY(-7px) rotate(1.5deg);
+  }
+}
+
+.gate-tech-pill {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  background: linear-gradient(145deg, #ffffff 0%, #bae6fd 65%, #38bdf8 100%);
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.35),
+    inset 0 3px 5px rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px rgba(2, 132, 199, 0.4);
+}
+
+.gate-title {
+  font-size: clamp(2rem, 3.6vw, 2.7rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 5px 12px rgba(0, 0, 0, 0.6);
+}
+
+.gate-sub {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #bae6fd;
+  margin-bottom: 6px;
+}
+
+/* Tombol Clay Empuk "RAKIT ROBOT" */
+.gate-assemble-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: 24px;
+  border: 3.5px solid #ffffff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #0f172a;
+  background: radial-gradient(circle at 35% 25%, #ffffff 0%, #7dd3fc 42%, #38bdf8 78%, #0284c7 100%);
+  box-shadow:
+    0 14px 26px rgba(2, 132, 199, 0.45),
+    inset 0 6px 10px rgba(255, 255, 255, 0.95),
+    inset 0 -7px 12px rgba(3, 105, 161, 0.55);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+
+.gate-assemble-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow:
+    0 18px 34px rgba(2, 132, 199, 0.6),
+    inset 0 6px 10px rgba(255, 255, 255, 1),
+    inset 0 -7px 12px rgba(3, 105, 161, 0.55);
+}
+
+.gate-assemble-btn:active {
+  transform: scale(0.93);
+}
+
+.assemble-led {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 8px #0f172a;
+}
+
+/* Saat Gerbang Membuka: 4 Blob Abstrak Membelah ke 4 Penjuru */
+.abstract-clay-gate.is-opening {
   pointer-events: none;
 }
 
-/* ==================== MATA ROBOT ==================== */
+.abstract-clay-gate.is-opening .gate-center-blob {
+  transform: scale(0.25) rotate(25deg);
+  opacity: 0;
+}
+
+.abstract-clay-gate.is-opening .gate-blob-tl {
+  transform: translate3d(-115%, -115%, 0) rotate(-25deg) scale(0.85);
+  opacity: 0;
+}
+
+.abstract-clay-gate.is-opening .gate-blob-tr {
+  transform: translate3d(115%, -115%, 0) rotate(25deg) scale(0.85);
+  opacity: 0;
+}
+
+.abstract-clay-gate.is-opening .gate-blob-bl {
+  transform: translate3d(-115%, 115%, 0) rotate(-20deg) scale(0.85);
+  opacity: 0;
+}
+
+.abstract-clay-gate.is-opening .gate-blob-br {
+  transform: translate3d(115%, 115%, 0) rotate(20deg) scale(0.85);
+  opacity: 0;
+}
+
+/* ==================== KOMPONEN MUKA ROBOT TERSEBAR DI ATAS GATE LALU MENYATU ==================== */
+/* Stage robot berada DI ATAS gerbang saat gate belum dibuka supaya komponen wajah tampil mengambang di gate */
+.robot-stage {
+  position: relative;
+  z-index: 65;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.robot-face {
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2.2vh, 22px);
+  padding: 12px 20px;
+  transform: translate3d(calc(var(--look-x) * 6px), calc(var(--look-y) * 5px), 0);
+  transition: transform 0.2s ease-out;
+}
+
+.clay-antenna,
+.eye,
+.nose,
+.mouth {
+  pointer-events: auto;
+}
+
+/* Tulisan "Hai gua icat" disembunyikan saat masih di Gate, lalu muncul membal saat komponen wajah menyatu */
+.greeting-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-28px) scale(0.75);
+  pointer-events: none;
+  transition:
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s,
+    opacity 0.6s ease 0.35s;
+}
+
+body.gate-opened .greeting-wrap {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Komponen Muka Robot (Antena, Alis Kiri/Kanan, Mata Kiri/Kanan, Pipi Kiri/Kanan, Hidung, Mulut) */
+.clay-antenna,
+.eyebrow-left,
+.eyebrow-right,
+#eyeLeft,
+#eyeRight,
+.cheek-left,
+.cheek-right,
+.nose-wrap,
+.mouth-wrap {
+  will-change: transform;
+}
+
+/* Goyangan Mengambang Halus Saat Komponen Masih Terpecah Belah di Gate */
+body:not(.gate-opened) .clay-antenna .antenna-ball {
+  animation: gateFloat Wobble 2.2s ease-in-out infinite alternate;
+}
+
+body:not(.gate-opened) .eye-rim,
+body:not(.gate-opened) .nose,
+body:not(.gate-opened) .mouth-rim {
+  box-shadow:
+    0 26px 46px rgba(5, 8, 17, 0.42),
+    0 8px 18px rgba(56, 189, 248, 0.28),
+    inset 0 8px 12px rgba(255, 255, 255, 1),
+    inset 0 -10px 16px rgba(148, 163, 184, 0.45);
+}
+
+/* ==================== BACKGROUND CLAY WORLD (MONOCHROME / NETRAL) ==================== */
+
+/* Grup Wajah Clay */
+
+.brand-title {
+  font-size: clamp(1.65rem, 3.6vw, 2.65rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--clay-ink);
+  line-height: 1.1;
+  text-shadow: 0 4px 0 rgba(255, 255, 255, 0.9);
+}
+
+.brand-highlight {
+  display: inline-block;
+  padding: 2px 14px 4px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 100%);
+  color: #0f172a;
+  box-shadow:
+    0 6px 14px rgba(var(--accent-rgb), 0.35),
+    inset 0 3px 6px rgba(255, 255, 255, 0.8),
+    inset 0 -4px 7px rgba(0, 0, 0, 0.12);
+  transform: rotate(-2deg);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-subtitle {
+  font-size: clamp(0.8rem, 1.25vw, 0.98rem);
+  font-weight: 700;
+  color: var(--clay-muted);
+}
+
+/* Grup Wajah Clay */
+.clay-face-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 2.5vh, 26px);
+  padding: clamp(10px, 1.5vh, 18px) clamp(18px, 2.5vw, 28px);
+}
+
+/* Antena Lucu di Atas */
+.clay-antenna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: -8px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.clay-antenna:hover {
+  transform: scale(1.12) rotate(8deg);
+}
+
+.antenna-ball {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #ffffff 0%, var(--nose-bg) 45%, var(--nose-deep) 100%);
+  box-shadow:
+    0 6px 14px rgba(225, 29, 72, 0.32),
+    inset 0 3px 5px rgba(255, 255, 255, 0.8),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.2);
+  animation: antennaBounce 2.4s ease-in-out infinite;
+}
+
+.antenna-stem {
+  width: 10px;
+  height: 16px;
+  margin-top: -3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #cbd5e1, #94a3b8);
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes antennaBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px) scale(1.06); }
+}
+
+/* Badge Penunjuk Interaksi di Tiap Fitur */
+.feature-badge {
+  position: absolute;
+  z-index: 12;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--clay-ink);
+  background: #ffffff;
+  box-shadow:
+    0 6px 12px rgba(30, 27, 75, 0.14),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 5px rgba(30, 27, 75, 0.1);
+  opacity: 0;
+  transform: translateY(6px) scale(0.88);
+  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.badge-eye {
+  top: -14px;
+  left: 50%;
+  transform: translate(-50%, 6px) scale(0.88);
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+}
+
+.eye:hover .badge-eye {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.badge-nose {
+  top: -28px;
+  left: 50%;
+  transform: translate(-50%, 6px) scale(0.88);
+  background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+}
+
+.nose:hover .badge-nose {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.badge-mouth {
+  bottom: -26px;
+  left: 50%;
+  transform: translate(-50%, -6px) scale(0.88);
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.mouth:hover .badge-mouth {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* ==================== MATA CLAYMORPHISM ==================== */
 .eyes-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(32px, 7vw, 92px);
+  gap: clamp(28px, 5.5vw, 74px);
+}
+
+.eye-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clay-eyebrow {
+  width: clamp(54px, 7.5vw, 82px);
+  height: clamp(12px, 1.7vw, 17px);
+  margin-bottom: 10px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #4338ca, #1e1b4b);
+  box-shadow:
+    0 6px 12px rgba(30, 27, 75, 0.18),
+    inset 0 3px 5px rgba(255, 255, 255, 0.35),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.35);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.eyebrow-left {
+  transform: rotate(-4deg);
+}
+
+.eyebrow-right {
+  transform: rotate(4deg);
 }
 
 .eye {
   position: relative;
-  width: clamp(118px, 19vw, 186px);
-  height: clamp(96px, 15.5vw, 150px);
+  width: clamp(114px, 16.5vw, 170px);
+  height: clamp(100px, 14.5vw, 148px);
   cursor: pointer;
   outline: none;
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .eye:hover {
-  transform: scale(1.03);
+  transform: scale(1.06) translateY(-3px);
 }
 
 .eye:active {
-  transform: scale(0.97);
-}
-
-.eye:focus-visible .eye-rim,
-.nose:focus-visible,
-.mouth:focus-visible .mouth-rim {
-  box-shadow:
-    0 0 0 4px #ffffff,
-    0 0 0 7px var(--accent),
-    0 14px 28px var(--shadow-soft);
+  transform: scale(0.92);
 }
 
 .eye-rim {
   width: 100%;
   height: 100%;
-  padding: 8px;
-  border-radius: 36% / 44%;
-  background: linear-gradient(145deg, #2d384d 0%, var(--metal-dark) 58%, #0d121b 100%);
-  border: 2px solid var(--metal-edge);
+  padding: clamp(9px, 1.1vw, 13px);
+  border-radius: 44% 44% 48% 48% / 48% 48% 44% 44%;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 58%, #e2e8f0 100%);
   box-shadow:
-    0 16px 32px var(--shadow-soft),
-    0 4px 10px var(--shadow-deep),
-    inset 0 2px 3px rgba(255, 255, 255, 0.14);
+    0 20px 34px rgba(30, 27, 75, 0.16),
+    0 6px 12px rgba(30, 27, 75, 0.1),
+    inset 0 8px 12px rgba(255, 255, 255, 1),
+    inset 0 -10px 16px rgba(148, 163, 184, 0.42);
+  border: 3px solid #ffffff;
   transition: border-radius 0.35s ease, box-shadow 0.25s ease;
 }
 
@@ -158,20 +927,12 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 33% / 41%;
-  background: radial-gradient(circle at 50% 42%, var(--screen-tint) 0%, var(--screen-bg) 72%, #05080f 100%);
+  border-radius: 40% 40% 44% 44% / 44% 44% 40% 40%;
+  background: radial-gradient(circle at 50% 38%, #2e2a5a 0%, var(--screen-dark) 62%, var(--screen-deep) 100%);
   overflow: hidden;
-  box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.78);
-}
-
-.eye-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(var(--accent-rgb), 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.06) 1px, transparent 1px);
-  background-size: 14px 14px;
-  pointer-events: none;
+  box-shadow:
+    inset 0 8px 18px rgba(0, 0, 0, 0.65),
+    inset 0 -4px 10px rgba(var(--accent-rgb), 0.22);
 }
 
 .pupil-rig {
@@ -184,107 +945,87 @@ body {
 
 .iris-ring {
   position: relative;
-  width: 54%;
+  width: 58%;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 3.5px solid var(--accent);
   background: radial-gradient(
-    circle at 50% 50%,
-    rgba(var(--accent-rgb), 0.28) 0%,
-    rgba(var(--accent-rgb), 0.08) 58%,
-    rgba(var(--accent-rgb), 0.02) 100%
+    circle at 35% 32%,
+    var(--accent-bright) 0%,
+    var(--accent) 52%,
+    var(--accent-deep) 100%
   );
   box-shadow:
-    0 0 18px rgba(var(--accent-rgb), 0.55),
-    inset 0 0 14px rgba(var(--accent-rgb), 0.45);
+    0 0 22px rgba(var(--accent-rgb), 0.65),
+    inset 0 5px 9px rgba(255, 255, 255, 0.75),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.35);
   display: grid;
   place-items: center;
-  transition: transform 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.reticle-tick {
-  position: absolute;
-  background: var(--accent-bright);
-  border-radius: 2px;
-  opacity: 0.85;
-  transition: background-color 0.2s ease;
-}
-
-.tick-top,
-.tick-bottom {
-  width: 2px;
-  height: 7px;
-}
-
-.tick-top {
-  top: -5px;
-}
-
-.tick-bottom {
-  bottom: -5px;
-}
-
-.tick-left,
-.tick-right {
-  width: 7px;
-  height: 2px;
-}
-
-.tick-left {
-  left: -5px;
-}
-
-.tick-right {
-  right: -5px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pupil-core {
   position: relative;
-  width: 48%;
+  width: 52%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle at 38% 35%, #ffffff 0%, var(--accent-bright) 32%, var(--accent) 70%, var(--accent-deep) 100%);
-  box-shadow: 0 0 16px var(--accent);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  background: radial-gradient(circle at 40% 35%, #312e81 0%, #0f0d24 75%);
+  box-shadow:
+    inset 0 3px 6px rgba(255, 255, 255, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease;
 }
 
 .pupil-glint {
   position: absolute;
-  top: 16%;
-  left: 20%;
-  width: 30%;
-  height: 30%;
   border-radius: 50%;
   background: #ffffff;
-  opacity: 0.95;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
 }
 
-/* Kelopak mata mekanis */
+.glint-lg {
+  top: 14%;
+  left: 16%;
+  width: 34%;
+  height: 34%;
+}
+
+.glint-sm {
+  bottom: 18%;
+  right: 18%;
+  width: 17%;
+  height: 17%;
+  opacity: 0.85;
+}
+
+/* Kelopak Mata Clay Empuk */
 .eyelid {
   position: absolute;
-  left: -4%;
-  width: 108%;
-  height: 56%;
-  background: linear-gradient(180deg, #1b2434 0%, #101622 100%);
+  left: -5%;
+  width: 110%;
+  height: 58%;
+  background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 100%);
+  box-shadow:
+    inset 0 4px 8px rgba(255, 255, 255, 0.9),
+    inset 0 -5px 10px rgba(100, 116, 139, 0.35);
   z-index: 4;
-  transition: transform 0.11s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+  transition: transform 0.13s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
 .eyelid-top {
   top: 0;
-  border-bottom: 2px solid rgba(var(--accent-rgb), 0.5);
-  transform: translateY(-102%);
+  border-bottom: 4px solid var(--accent);
+  border-radius: 0 0 28px 28px;
+  transform: translateY(-105%);
 }
 
 .eyelid-bottom {
   bottom: 0;
-  background: linear-gradient(0deg, #1b2434 0%, #101622 100%);
-  border-top: 2px solid rgba(var(--accent-rgb), 0.4);
-  transform: translateY(102%);
+  border-top: 4px solid var(--accent);
+  border-radius: 28px 28px 0 0;
+  transform: translateY(105%);
 }
 
-/* State mengedip */
 .eye.is-blinking .eyelid-top {
   transform: translateY(-2%);
 }
@@ -293,104 +1034,160 @@ body {
   transform: translateY(2%);
 }
 
-/* ==================== HIDUNG ROBOT ==================== */
+/* Pipi Merona Clay */
+.clay-cheek {
+  position: absolute;
+  bottom: -10px;
+  width: clamp(28px, 4vw, 42px);
+  height: clamp(16px, 2.2vw, 23px);
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #fff1f2 0%, var(--cheek-color) 65%, #f43f5e 100%);
+  box-shadow:
+    0 6px 12px rgba(244, 63, 94, 0.24),
+    inset 0 3px 5px rgba(255, 255, 255, 0.75),
+    inset 0 -3px 6px rgba(190, 18, 60, 0.25);
+  opacity: 0.88;
+  pointer-events: none;
+  transition: transform 0.25s ease, background 0.3s ease;
+}
+
+.cheek-left {
+  left: -14px;
+  transform: rotate(-8deg);
+}
+
+.cheek-right {
+  right: -14px;
+  transform: rotate(8deg);
+}
+
+/* ==================== HIDUNG CLAYMORPHISM ==================== */
+.nose-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: -6px;
+}
+
 .nose {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  width: clamp(44px, 6.2vw, 60px);
-  padding: 10px 8px 9px;
-  border-radius: 16px 16px 24px 24px;
-  background: linear-gradient(155deg, #2d384d 0%, var(--metal-dark) 62%, #0e141f 100%);
-  border: 2px solid var(--metal-edge);
+  gap: 6px;
+  width: clamp(54px, 7.2vw, 72px);
+  height: clamp(46px, 6.2vw, 62px);
+  padding: 10px;
+  border-radius: 48% 48% 54% 54% / 44% 44% 56% 56%;
+  background: radial-gradient(circle at 35% 28%, #ffffff 0%, var(--nose-bg) 38%, var(--nose-deep) 100%);
+  border: 3px solid #ffffff;
   box-shadow:
-    0 10px 20px var(--shadow-soft),
-    0 3px 6px var(--shadow-deep),
-    inset 0 2px 2px rgba(255, 255, 255, 0.14);
+    0 14px 24px rgba(225, 29, 72, 0.24),
+    0 4px 8px rgba(30, 27, 75, 0.12),
+    inset 0 6px 10px rgba(255, 255, 255, 0.78),
+    inset 0 -8px 12px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   outline: none;
-  transform: translate3d(calc(var(--look-x) * 6px), calc(var(--look-y) * 4px), 0);
-  transition: transform 0.18s ease-out, box-shadow 0.2s ease;
+  transform: translate3d(calc(var(--look-x) * 8px), calc(var(--look-y) * 5px), 0);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.3s ease;
 }
 
 .nose:hover {
-  box-shadow:
-    0 12px 24px var(--shadow-soft),
-    0 0 0 3px rgba(var(--accent-rgb), 0.35);
+  transform: translate3d(calc(var(--look-x) * 8px), calc(var(--look-y) * 5px), 0) scale(1.13) rotate(-4deg);
 }
 
 .nose:active {
-  transform: translate3d(calc(var(--look-x) * 6px), calc(var(--look-y) * 4px), 0) scale(0.92);
+  transform: translate3d(calc(var(--look-x) * 8px), calc(var(--look-y) * 5px), 0) scale(0.88);
+}
+
+.nose-highlight {
+  position: absolute;
+  top: 8px;
+  left: 13px;
+  width: 14px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  transform: rotate(-18deg);
+  pointer-events: none;
 }
 
 .nose-bridge {
-  width: 10px;
-  height: 22px;
+  width: 12px;
+  height: 18px;
   border-radius: 999px;
-  background: var(--screen-bg);
+  background: rgba(15, 13, 36, 0.38);
   display: grid;
   place-items: center;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
 }
 
 .nose-led {
-  width: 4px;
-  height: 12px;
+  width: 6px;
+  height: 10px;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  opacity: 0.7;
-  transition: opacity 0.15s ease, transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
 .nose-vents {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .vent {
   width: 7px;
-  height: 4px;
+  height: 5px;
   border-radius: 999px;
-  background: #090e17;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(15, 13, 36, 0.45);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* ==================== MULUT ROBOT ==================== */
+/* ==================== MULUT CLAYMORPHISM ==================== */
+.mouth-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 .mouth {
+  position: relative;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   outline: none;
-  width: clamp(190px, 34vw, 310px);
-  height: clamp(64px, 10.5vw, 96px);
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  width: clamp(195px, 29vw, 290px);
+  height: clamp(68px, 10vw, 94px);
+  transition:
+    transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
+    width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mouth:hover {
-  transform: scale(1.025);
+  transform: scale(1.06) translateY(-2px);
 }
 
 .mouth:active {
-  transform: scale(0.98);
+  transform: scale(0.93);
 }
 
 .mouth-rim {
   display: block;
   width: 100%;
   height: 100%;
-  padding: 7px;
-  border-radius: 999px;
-  background: linear-gradient(155deg, #2d384d 0%, var(--metal-dark) 58%, #0d121b 100%);
-  border: 2px solid var(--metal-edge);
+  padding: 9px;
+  border-radius: 36px 36px 52px 52px;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+  border: 3px solid #ffffff;
   box-shadow:
-    0 16px 32px var(--shadow-soft),
-    0 4px 10px var(--shadow-deep),
-    inset 0 2px 3px rgba(255, 255, 255, 0.14);
+    0 20px 34px rgba(30, 27, 75, 0.15),
+    0 6px 12px rgba(30, 27, 75, 0.09),
+    inset 0 7px 11px rgba(255, 255, 255, 1),
+    inset 0 -9px 15px rgba(148, 163, 184, 0.42);
   transition: border-radius 0.3s ease, transform 0.12s ease;
 }
 
@@ -401,20 +1198,24 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: radial-gradient(ellipse at 50% 50%, var(--screen-tint) 0%, var(--screen-bg) 78%, #05080f 100%);
+  padding: 10px 20px;
+  border-radius: 28px 28px 44px 44px;
+  background: radial-gradient(ellipse at 50% 40%, #2e2a5a 0%, var(--screen-dark) 72%, var(--screen-deep) 100%);
   overflow: hidden;
-  box-shadow: inset 0 6px 16px rgba(0, 0, 0, 0.82);
+  box-shadow: inset 0 7px 16px rgba(0, 0, 0, 0.72);
 }
 
-.mouth-grid {
+.mouth-tongue {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(var(--accent-rgb), 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--accent-rgb), 0.06) 1px, transparent 1px);
-  background-size: 10px 10px;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54%;
+  height: 32px;
+  border-radius: 50% 50% 0 0;
+  background: radial-gradient(circle at 50% 30%, #fda4af 0%, #fb7185 65%, #e11d48 100%);
+  box-shadow: inset 0 4px 7px rgba(255, 255, 255, 0.55);
+  opacity: 0.75;
   pointer-events: none;
 }
 
@@ -424,82 +1225,1294 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(5px, 0.9vw, 8px);
+  gap: clamp(5px, 0.85vw, 8px);
   width: 100%;
   height: 100%;
 }
 
 .voice-bar {
   flex: 1;
-  height: 16%;
-  min-height: 6px;
+  height: 20%;
+  min-height: 8px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-deep) 100%);
-  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.55);
+  background: linear-gradient(180deg, #ffffff 0%, var(--accent-bright) 28%, var(--accent) 75%, var(--accent-deep) 100%);
+  box-shadow:
+    0 0 12px rgba(var(--accent-rgb), 0.65),
+    inset 0 2px 3px rgba(255, 255, 255, 0.85);
   will-change: height, opacity;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ==================== EKSPRESI / MOOD ==================== */
-/* Mood: Senang (Happy) */
+/* ==================== MOOD EKSPRESI WAJAH ==================== */
 .robot-face[data-mood="happy"] .eye:not(.is-blinking) .eyelid-bottom {
-  transform: translateY(58%);
-  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+  transform: translateY(56%);
 }
 
-.robot-face[data-mood="happy"] .iris-ring {
-  transform: scale(1.06);
+.robot-face[data-mood="happy"] .clay-cheek {
+  transform: scale(1.18);
 }
 
-/* Mood: Berpikir (Thinking) */
 .robot-face[data-mood="thinking"] #eyeLeft:not(.is-blinking) .eyelid-top {
-  transform: translateY(-56%);
+  transform: translateY(-54%);
 }
 
-.robot-face[data-mood="thinking"] #eyeRight:not(.is-blinking) .eyelid-top {
-  transform: translateY(-76%);
+.robot-face[data-mood="thinking"] .eyebrow-left {
+  transform: translateY(4px) rotate(8deg);
 }
 
-.robot-face[data-mood="thinking"] #eyeRight:not(.is-blinking) .eyelid-bottom {
-  transform: translateY(72%);
+.robot-face[data-mood="thinking"] .eyebrow-right {
+  transform: translateY(-7px) rotate(14deg);
 }
 
-/* Mood: Terkejut (Surprised) */
 .robot-face[data-mood="surprised"] .iris-ring {
   transform: scale(0.84);
 }
 
-.robot-face[data-mood="surprised"] .pupil-core {
-  transform: scale(0.82);
+.robot-face[data-mood="surprised"] .eyebrow-left {
+  transform: translateY(-8px) rotate(-12deg);
+}
+
+.robot-face[data-mood="surprised"] .eyebrow-right {
+  transform: translateY(-8px) rotate(12deg);
 }
 
 .robot-face[data-mood="surprised"] .mouth-rim {
-  border-radius: 28px;
+  border-radius: 44px;
 }
 
-/* Responsif untuk layar kecil */
-@media (max-width: 480px) {
-  .robot-face {
-    gap: 24px;
-  }
+/* ==================== MOOD: TIDUR (SLEEPING) & MULUT MENUTUP ==================== */
+.sleep-zzz {
+  position: absolute;
+  top: -34px;
+  right: -68px;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px) scale(0.7);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
+.zzz-char {
+  display: inline-grid;
+  place-items: center;
+  font-weight: 900;
+  color: #0284c7;
+  background: linear-gradient(145deg, #ffffff 0%, #e0f2fe 100%);
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow:
+    0 8px 16px rgba(15, 23, 42, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -3px 5px rgba(2, 132, 199, 0.22);
+}
+
+.z-1 {
+  width: 28px;
+  height: 28px;
+  font-size: 0.92rem;
+  animation: floatZzz 2.2s ease-in-out infinite;
+}
+
+.z-2 {
+  width: 23px;
+  height: 23px;
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+  animation: floatZzz 2.2s ease-in-out 0.35s infinite;
+}
+
+.z-3 {
+  width: 19px;
+  height: 19px;
+  font-size: 0.64rem;
+  margin-bottom: 20px;
+  animation: floatZzz 2.2s ease-in-out 0.7s infinite;
+}
+
+@keyframes floatZzz {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-8px) rotate(8deg) scale(1.08); }
+}
+
+.robot-face[data-mood="sleeping"] .sleep-zzz {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Mata Merem Rapat Saat Tidur (Tanpa Celah Menyilang di Ujung) */
+.robot-face[data-mood="sleeping"] .eye .eyelid-top {
+  transform: translateY(0%);
+  border-radius: 0;
+}
+
+.robot-face[data-mood="sleeping"] .eye .eyelid-bottom {
+  transform: translateY(0%);
+  border-radius: 0;
+  border-top-color: transparent;
+}
+
+.robot-face[data-mood="sleeping"] .eyebrow-left {
+  transform: translateY(6px) rotate(-10deg);
+}
+
+.robot-face[data-mood="sleeping"] .eyebrow-right {
+  transform: translateY(6px) rotate(10deg);
+}
+
+.robot-face[data-mood="sleeping"] .antenna-ball {
+  animation: none;
+  opacity: 0.75;
+}
+
+/* Mulut Menutup Rapat (Saat Mood Tidur atau Saat Bicara Dimatikan) */
+.robot-face[data-mood="sleeping"] .mouth,
+.mouth.is-closed {
+  width: clamp(128px, 19vw, 184px);
+  height: clamp(28px, 4.2vw, 36px);
+}
+
+.robot-face[data-mood="sleeping"] .mouth-rim,
+.mouth.is-closed .mouth-rim {
+  padding: 6px 12px;
+  border-radius: 999px;
+  animation: sleepingBreath 2.8s ease-in-out infinite;
+}
+
+.robot-face[data-mood="sleeping"] .mouth-screen,
+.mouth.is-closed .mouth-screen {
+  padding: 2px 14px;
+  border-radius: 999px;
+}
+
+.robot-face[data-mood="sleeping"] .mouth-tongue,
+.mouth.is-closed .mouth-tongue {
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+}
+
+@keyframes sleepingBreath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05, 0.92); }
+}
+
+/* ==================== MOOD: MENCIUM (KISSING / CHU~) ==================== */
+/* Mulut Monyong Membulat Kecil Maju ke Depan (Pucker Lips 3D Clay) */
+.robot-face[data-mood="kissing"] .mouth {
+  width: clamp(68px, 9.2vw, 88px);
+  height: clamp(68px, 9.2vw, 88px);
+}
+
+.robot-face[data-mood="kissing"] .mouth-rim {
+  padding: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, var(--nose-bg) 42%, var(--nose-deep) 100%);
+  border-color: #ffffff;
+  box-shadow:
+    0 20px 36px rgba(225, 29, 72, 0.35),
+    0 6px 14px rgba(15, 23, 42, 0.16),
+    inset 0 8px 12px rgba(255, 255, 255, 0.85),
+    inset 0 -10px 16px rgba(0, 0, 0, 0.32);
+  animation: kissPuckerPulse 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+.robot-face[data-mood="kissing"] .mouth-screen {
+  padding: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #090d16 0%, #1e1b4b 70%, #312e81 100%);
+  box-shadow:
+    inset 0 6px 12px rgba(0, 0, 0, 0.85),
+    0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+.robot-face[data-mood="kissing"] .mouth-tongue {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.3);
+}
+
+.robot-face[data-mood="kissing"] .voice-bars {
+  transform: scale(0.42);
+  opacity: 0.45;
+}
+
+@keyframes kissPuckerPulse {
+  0% { transform: scale(0.94) translateY(2px); }
+  100% { transform: scale(1.16) translateY(-5px); }
+}
+
+/* Mata Kanan Mengedip Manis (Wink) & Mata Kiri Melengkung Senang Saat Mencium */
+.robot-face[data-mood="kissing"] #eyeRight .eyelid-top {
+  transform: translateY(0%);
+  border-radius: 0;
+}
+
+.robot-face[data-mood="kissing"] #eyeRight .eyelid-bottom {
+  transform: translateY(0%);
+  border-radius: 0;
+  border-top-color: transparent;
+}
+
+.robot-face[data-mood="kissing"] #eyeLeft:not(.is-blinking) .eyelid-bottom {
+  transform: translateY(52%);
+}
+
+.robot-face[data-mood="kissing"] .eyebrow-left {
+  transform: translateY(-7px) rotate(-10deg);
+}
+
+.robot-face[data-mood="kissing"] .eyebrow-right {
+  transform: translateY(3px) rotate(14deg);
+}
+
+/* Pipi Merona Membesar Saat Mencium */
+.robot-face[data-mood="kissing"] .cheek-left {
+  transform: rotate(-10deg) scale(1.34);
+  opacity: 1;
+}
+
+.robot-face[data-mood="kissing"] .cheek-right {
+  transform: rotate(10deg) scale(1.34);
+  opacity: 1;
+}
+
+/* Hati Clay 3D (Pure CSS Shape Tanpa Emoji) Melayang dari Mulut */
+.kiss-hearts {
+  position: absolute;
+  top: -18px;
+  right: -54px;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 35;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.28s ease, transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.robot-face[data-mood="kissing"] .kiss-hearts {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.clay-heart {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 35% 35%, #ffe4e6 0%, #fb7185 45%, #e11d48 100%);
+  transform: rotate(-45deg);
+  border-radius: 4px;
+  box-shadow:
+    0 8px 16px rgba(225, 29, 72, 0.32),
+    inset 0 -3px 6px rgba(136, 19, 55, 0.45);
+}
+
+.clay-heart::before,
+.clay-heart::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.clay-heart::before {
+  top: -11px;
+  left: 0;
+  box-shadow: inset 0 3px 5px rgba(255, 255, 255, 0.8);
+}
+
+.clay-heart::after {
+  top: 0;
+  left: 11px;
+  box-shadow: inset -2px 3px 5px rgba(255, 255, 255, 0.65);
+}
+
+.heart-1 {
+  bottom: 8px;
+  left: 6px;
+  animation: floatKissHeart 1.8s ease-in-out infinite;
+}
+
+.heart-2 {
+  bottom: 34px;
+  left: 34px;
+  scale: 0.76;
+  animation: floatKissHeart 1.8s ease-in-out 0.4s infinite;
+}
+
+.heart-3 {
+  bottom: 62px;
+  left: 16px;
+  scale: 0.56;
+  animation: floatKissHeart 1.8s ease-in-out 0.8s infinite;
+}
+
+@keyframes floatKissHeart {
+  0% {
+    transform: translate3d(0, 8px, 0) rotate(-45deg) scale(0.82);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(16px, -24px, 0) rotate(-32deg) scale(1.12);
+    opacity: 0;
+  }
+}
+
+/* ==================== TOMBOL-TOMBOL CLAY YANG JATUH ABSTRAK (UNIQUE SHAPES & GLITCH EXIT) ==================== */
+.dropped-buttons-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.clay-drop-btn {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  padding: clamp(12px, 1.5vh, 17px) clamp(18px, 2.1vw, 26px);
+  border: 3px solid #ffffff;
+  font-family: inherit;
+  color: #ffffff;
+  /* Mengikuti persis gradasi 3D clay dari warna hidung saat ini (--nose-bg & --nose-deep) */
+  background: radial-gradient(circle at 28% 24%, #ffffff 0%, var(--nose-bg) 36%, var(--nose-deep) 100%);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow:
+    0 18px 30px rgba(15, 23, 42, 0.18),
+    0 6px 12px rgba(15, 23, 42, 0.1),
+    inset 0 7px 12px rgba(255, 255, 255, 0.82),
+    inset 0 -9px 15px rgba(0, 0, 0, 0.26);
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+  transition:
+    filter 0.2s ease,
+    box-shadow 0.22s ease,
+    background 0.28s ease,
+    border-color 0.22s ease;
+}
+
+.clay-drop-btn:hover {
+  z-index: 40;
+  filter: brightness(1.06);
+  box-shadow:
+    0 24px 38px rgba(15, 23, 42, 0.24),
+    0 8px 16px rgba(15, 23, 42, 0.12),
+    inset 0 8px 12px rgba(255, 255, 255, 0.92),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.24);
+}
+
+/* 6 Bentuk Clay Organik / Geometris yang Berbeda-beda untuk Setiap Tombol (Bukan Pill Standar & Tanpa Circle di Kiri) */
+.clay-shape-pebble {
+  border-radius: 38px 14px 34px 16px / 22px 36px 16px 32px;
+}
+
+.clay-shape-splat {
+  border-radius: 16px 40px 18px 38px / 34px 16px 36px 20px;
+}
+
+.clay-shape-ticket {
+  border-radius: 12px 30px 12px 30px;
+  border-left-width: 7px;
+  border-left-color: rgba(255, 255, 255, 0.92);
+}
+
+.clay-shape-cloud {
+  border-radius: 44px 44px 18px 44px / 34px 34px 14px 34px;
+}
+
+.clay-shape-gem {
+  border-radius: 26px 10px 28px 10px;
+  padding-inline: clamp(20px, 2.3vw, 28px);
+}
+
+.clay-shape-wave {
+  border-radius: 42% 58% 35% 65% / 56% 36% 64% 44%;
+  padding: clamp(14px, 1.7vh, 19px) clamp(20px, 2.3vw, 28px);
+}
+
+.drop-btn-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+}
+
+.drop-btn-label {
+  font-size: clamp(0.88rem, 1.18vw, 1.04rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.32);
+}
+
+/* Efek Memerah + Error Glitching Saat Tombol Fitur Sebelumnya Menghilang */
+.clay-drop-btn.is-glitch-removing {
+  pointer-events: none !important;
+  z-index: 48;
+  background: linear-gradient(145deg, #fca5a5 0%, #ef4444 45%, #991b1b 100%) !important;
+  border-color: #fef08a !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 28px rgba(239, 68, 68, 0.88),
+    -5px 0 0 rgba(56, 189, 248, 0.85),
+    5px 0 0 rgba(254, 240, 138, 0.85),
+    inset 0 5px 10px rgba(255, 255, 255, 0.75),
+    inset 0 -7px 14px rgba(69, 10, 10, 0.85) !important;
+}
+
+.clay-drop-btn.is-glitch-removing .drop-btn-tag {
+  color: #fef08a !important;
+}
+
+.clay-drop-btn.is-glitch-removing .drop-btn-label {
+  color: #ffffff !important;
+  text-shadow: -2px 0 #38bdf8, 2px 0 #450a0a;
+}
+
+/* ==================== MODAL KARTU PORTOFOLIO CLAYMORPHISM ==================== */
+.clay-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(30, 27, 75, 0.34);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: fadeBackdrop 0.22s ease-out;
+}
+
+.clay-modal-backdrop[hidden] {
+  display: none;
+}
+
+@keyframes fadeBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.clay-modal-card {
+  width: min(500px, 94vw);
+  max-height: 86dvh;
+  overflow-y: auto;
+  padding: clamp(22px, 3.5vw, 32px);
+  border-radius: 36px;
+  background: linear-gradient(155deg, #ffffff 0%, #f8fafc 100%);
+  border: 4px solid #ffffff;
+  box-shadow:
+    0 28px 60px rgba(15, 23, 42, 0.2),
+    inset 0 8px 16px rgba(255, 255, 255, 0.98),
+    inset 0 -10px 20px rgba(148, 163, 184, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: popModal 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popModal {
+  0% { transform: translateY(24px) scale(0.86); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  color: #334155;
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.modal-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: var(--clay-shadow-sm);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.12) rotate(90deg);
+}
+
+.modal-icon-hero {
+  width: 60px;
+  height: 60px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #1e293b;
+  background: linear-gradient(145deg, #ffffff, #e2e8f0);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.modal-title {
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 900;
+  color: var(--clay-ink);
+  line-height: 1.2;
+}
+
+.modal-desc {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: #334155;
+  font-weight: 600;
+}
+
+.modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-tag {
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: #ffffff;
+  color: var(--clay-ink);
+  box-shadow: var(--clay-shadow-sm);
+}
+
+.modal-extra-box {
+  padding: 14px 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 3px 6px rgba(30, 27, 75, 0.06);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.modal-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(145deg, #38bdf8, #0284c7);
+  box-shadow:
+    0 12px 22px rgba(2, 132, 199, 0.3),
+    inset 0 3px 6px rgba(255, 255, 255, 0.65),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-cta-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Partikel Pop Clay Kecil Saat Klik */
+.clay-spark {
+  position: fixed;
+  z-index: 45;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.85),
+    0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ==================== MODE MARAH / KESAKITAN SAAT SPAM CLICK (MERAH & MEMBESAR) ==================== */
+body.is-pain-rage {
+  --bg-main: #dc2626 !important;
+  --bg-soft: #7f1d1d !important;
+  --clay-ink: #ffffff !important;
+  --clay-muted: #fecaca !important;
+  background: radial-gradient(circle at 50% 42%, #ef4444 0%, #b91c1c 55%, #450a0a 100%) !important;
+}
+
+body.is-pain-rage .robot-face {
+  --accent: #ef4444 !important;
+  --accent-bright: #fecaca !important;
+  --accent-deep: #991b1b !important;
+  --accent-rgb: 239, 68, 68 !important;
+  --nose-bg: #dc2626 !important;
+  --nose-deep: #7f1d1d !important;
+  --cheek-color: #ef4444 !important;
+  animation: rageShakeFace 0.36s linear infinite;
+}
+
+@keyframes rageShakeFace {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.06); }
+  20% { transform: translate3d(-10px, 6px, 0) rotate(-2deg) scale(1.08); }
+  40% { transform: translate3d(10px, -6px, 0) rotate(2deg) scale(1.07); }
+  60% { transform: translate3d(-8px, -4px, 0) rotate(-1.5deg) scale(1.08); }
+  80% { transform: translate3d(8px, 5px, 0) rotate(1.5deg) scale(1.06); }
+}
+
+body.is-pain-rage .bg-blob {
+  background: linear-gradient(145deg, #f87171 0%, #991b1b 100%) !important;
+  box-shadow:
+    inset 0 8px 16px rgba(255, 255, 255, 0.35),
+    inset 0 -10px 18px rgba(69, 10, 10, 0.75),
+    0 16px 32px rgba(69, 10, 10, 0.5) !important;
+  opacity: 0.85 !important;
+}
+
+body.is-pain-rage .brand-title {
+  color: #ffffff !important;
+  text-shadow: 0 4px 16px rgba(69, 10, 10, 0.8) !important;
+}
+
+body.is-pain-rage .brand-highlight {
+  background: linear-gradient(135deg, #fef08a 0%, #ef4444 100%) !important;
+  color: #450a0a !important;
+}
+
+body.is-pain-rage .eye-rim,
+body.is-pain-rage .mouth-rim {
+  background: linear-gradient(145deg, #fca5a5 0%, #dc2626 60%, #7f1d1d 100%) !important;
+  border-color: #fecaca !important;
+  box-shadow:
+    0 24px 44px rgba(69, 10, 10, 0.65),
+    0 0 28px rgba(239, 68, 68, 0.75),
+    inset 0 7px 12px rgba(255, 255, 255, 0.45),
+    inset 0 -10px 16px rgba(69, 10, 10, 0.75) !important;
+}
+
+body.is-pain-rage .eyebrow-left {
+  transform: translateY(10px) rotate(24deg) scale(1.15) !important;
+  background: linear-gradient(145deg, #450a0a, #000000) !important;
+}
+
+body.is-pain-rage .eyebrow-right {
+  transform: translateY(10px) rotate(-24deg) scale(1.15) !important;
+  background: linear-gradient(145deg, #450a0a, #000000) !important;
+}
+
+body.is-pain-rage .clay-drop-btn {
+  background: linear-gradient(145deg, #ef4444 0%, #991b1b 100%) !important;
+  border-color: #fca5a5 !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 18px 32px rgba(69, 10, 10, 0.6),
+    inset 0 5px 9px rgba(255, 255, 255, 0.35),
+    inset 0 -7px 12px rgba(69, 10, 10, 0.75) !important;
+}
+
+body.is-pain-rage .drop-btn-tag {
+  color: #fecaca !important;
+}
+
+body.is-pain-rage .drop-btn-label {
+  color: #ffffff !important;
+}
+
+body.is-pain-rage .drop-btn-dot {
+  background: #fef08a !important;
+  box-shadow: 0 0 12px #fef08a !important;
+}
+
+/* Komponen Mata / Hidung / Mulut yang Membesar (Bengkak Clay) Saat Di-Spam Click */
+.eye.is-swollen-pain {
+  transform: scale(1.42) rotate(-6deg) !important;
+  z-index: 45;
+}
+
+#eyeRight.is-swollen-pain {
+  transform: scale(1.42) rotate(6deg) !important;
+}
+
+.nose.is-swollen-pain {
+  transform: scale(1.68) rotate(8deg) !important;
+  background: radial-gradient(circle at 35% 28%, #fef08a 0%, #ef4444 40%, #7f1d1d 100%) !important;
+  box-shadow:
+    0 22px 42px rgba(220, 38, 38, 0.8),
+    0 0 32px rgba(254, 240, 138, 0.7),
+    inset 0 8px 12px rgba(255, 255, 255, 0.9),
+    inset 0 -10px 16px rgba(69, 10, 10, 0.7) !important;
+  z-index: 45;
+}
+
+.mouth.is-swollen-pain {
+  transform: scale(1.38) !important;
+  z-index: 45;
+}
+
+/* Overlay Shape Abstrak Clay "SAKITT WOII!!" + Logo Warning di Atas Teks */
+.pain-alert-overlay {
+  position: fixed;
+  top: clamp(18px, 4vh, 42px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-40px) scale(0.4);
+  z-index: 150;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.25s ease;
+}
+
+.pain-alert-overlay.is-active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.pain-abstract-blob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: clamp(18px, 2.5vh, 26px) clamp(32px, 4.5vw, 54px);
+  /* Bentuk Blob Abstrak Clay Organik */
+  border-radius: 64% 36% 58% 42% / 44% 62% 38% 56%;
+  background: radial-gradient(circle at 32% 28%, #ffedd5 0%, #ef4444 38%, #b91c1c 78%, #7f1d1d 100%);
+  border: 5px solid #ffffff;
+  box-shadow:
+    0 26px 54px rgba(69, 10, 10, 0.68),
+    0 0 0 10px rgba(254, 202, 202, 0.35),
+    inset 0 12px 20px rgba(255, 255, 255, 0.75),
+    inset 0 -14px 24px rgba(69, 10, 10, 0.75);
+  animation: painBlobMorph 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes painBlobMorph {
+  0% {
+    border-radius: 64% 36% 58% 42% / 44% 62% 38% 56%;
+    transform: rotate(-3deg) scale(1);
+  }
+  100% {
+    border-radius: 42% 58% 38% 62% / 58% 40% 60% 42%;
+    transform: rotate(3deg) scale(1.06);
+  }
+}
+
+.pain-warning-logo {
+  width: 62px;
+  height: 62px;
+  border-radius: 48% 52% 44% 56% / 54% 46% 54% 46%;
+  background: linear-gradient(145deg, #ffffff 0%, #fecaca 100%);
+  border: 3px solid #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 10px 20px rgba(69, 10, 10, 0.45),
+    inset 0 4px 7px rgba(255, 255, 255, 1),
+    inset 0 -5px 9px rgba(185, 28, 28, 0.35);
+  animation: warningPulse 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes warningPulse {
+  0% { transform: scale(0.95) rotate(-6deg); }
+  100% { transform: scale(1.12) rotate(6deg); }
+}
+
+.pain-alert-text {
+  font-size: clamp(1.5rem, 3.4vw, 2.35rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow:
+    0 4px 0 #7f1d1d,
+    0 8px 18px rgba(0, 0, 0, 0.55);
+}
+
+/* ==================== FITUR BARU 1-5: DIZZY SPIRAL, ELASTIC PULL, FEED MOUTH, SYNTH, HUD CLOCK & SUNGLASSES ==================== */
+
+/* 1. Jam Real-time & Mood Meter di Antena */
+.antenna-hud-tag {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+  border: 2px solid #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.63rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #1e293b;
+  white-space: nowrap;
+  box-shadow:
+    0 8px 16px rgba(15, 23, 42, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 1),
+    inset 0 -3px 5px rgba(148, 163, 184, 0.28);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease 0.4s, transform 0.3s ease;
+}
+
+body.gate-opened .antenna-hud-tag {
+  opacity: 1;
+}
+
+body.is-dark-sleep .antenna-hud-tag {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  border-color: #334155;
+  color: #e2e8f0;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.14);
+}
+
+.hud-battery-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--nose-bg);
+  box-shadow: 0 0 8px var(--nose-bg);
+}
+
+.hud-mood-code {
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--accent-deep);
+}
+
+body.is-dark-sleep .hud-mood-code {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-bright);
+}
+
+/* 2. Pipi & Antena Elastis (Elastic Clay Pull) */
+.clay-cheek {
+  pointer-events: auto !important;
+  cursor: grab;
+  touch-action: none;
+}
+
+.clay-cheek:active,
+.clay-cheek.is-pulling {
+  cursor: grabbing;
+  transition: none !important;
+}
+
+.antenna-ball {
+  cursor: grab;
+  touch-action: none;
+}
+
+.antenna-ball.is-pulling {
+  cursor: grabbing;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 3. Reaksi Pusing (Dizzy Spiral Eyes) Saat Kursor Diputar-putar */
+.dizzy-orbit {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  width: 98px;
+  height: 32px;
+  transform: translateX(-50%) scale(0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.robot-face[data-mood="dizzy"] .dizzy-orbit {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  animation: dizzyCrownSpin 1.1s linear infinite;
+}
+
+.dizzy-ring-item {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #fde047 50%, #f59e0b 100%);
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.55);
+}
+
+.d-1 { top: 0; left: 0; }
+.d-2 { top: -8px; left: 42px; background: radial-gradient(circle at 35% 30%, #ffffff 0%, #7dd3fc 50%, #0284c7 100%); }
+.d-3 { top: 4px; right: 0; }
+
+@keyframes dizzyCrownSpin {
+  0% { transform: translateX(-50%) rotate(0deg) scale(1); }
+  50% { transform: translateX(-50%) rotate(180deg) scale(1.08, 0.92); }
+  100% { transform: translateX(-50%) rotate(360deg) scale(1); }
+}
+
+.robot-face[data-mood="dizzy"] .clay-face-group {
+  animation: dizzyHeadWobble 0.65s ease-in-out infinite alternate;
+}
+
+@keyframes dizzyHeadWobble {
+  0% { transform: rotate(-6deg) translateX(-8px); }
+  100% { transform: rotate(6deg) translateX(8px); }
+}
+
+.robot-face[data-mood="dizzy"] #eyeLeft .iris-ring {
+  border: 5px dashed #ffffff;
+  animation: dizzyEyeSpin 0.55s linear infinite;
+}
+
+.robot-face[data-mood="dizzy"] #eyeRight .iris-ring {
+  border: 5px dashed #ffffff;
+  animation: dizzyEyeSpin 0.55s linear infinite reverse;
+}
+
+@keyframes dizzyEyeSpin {
+  from { transform: rotate(0deg) scale(0.92); }
+  to { transform: rotate(360deg) scale(0.92); }
+}
+
+.robot-face[data-mood="dizzy"] .eyebrow-left {
+  transform: translateY(-6px) rotate(-18deg);
+}
+
+.robot-face[data-mood="dizzy"] .eyebrow-right {
+  transform: translateY(4px) rotate(-14deg);
+}
+
+/* 4. Drag & Feed the Robot (Seret Tombol Jatuh ke Dalam Mulut Robot) */
+.clay-drop-btn {
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.clay-drop-btn:active,
+.clay-drop-btn.is-dragging {
+  z-index: 95 !important;
+  cursor: grabbing !important;
+  filter: brightness(1.08);
+  box-shadow:
+    0 28px 50px rgba(15, 23, 42, 0.34),
+    0 0 0 4px rgba(255, 255, 255, 0.95),
+    inset 0 8px 14px rgba(255, 255, 255, 0.95),
+    inset 0 -9px 15px rgba(0, 0, 0, 0.3) !important;
+  transition: none !important;
+}
+
+/* Mulut Membuka Lebar ("Aaaam!") Ketika Tombol Didekatkan ke Mulut */
+.mouth.is-hungry-open {
+  transform: scale(1.22) translateY(-4px) !important;
+}
+
+.mouth.is-hungry-open .mouth-rim {
+  border-radius: 48px !important;
+  border-color: var(--nose-bg) !important;
+  box-shadow:
+    0 24px 44px rgba(15, 23, 42, 0.28),
+    0 0 28px rgba(var(--accent-rgb), 0.75),
+    inset 0 7px 11px rgba(255, 255, 255, 1),
+    inset 0 -9px 15px rgba(148, 163, 184, 0.45) !important;
+}
+
+.mouth.is-chomping {
+  animation: mouthChompAnim 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes mouthChompAnim {
+  0% { transform: scale(1.26, 1.3); }
+  45% { transform: scale(1.18, 0.42); }
+  75% { transform: scale(0.95, 1.12); }
+  100% { transform: scale(1); }
+}
+
+/* 5. Mini Synth / Kalimba 8-Bit di Bar Mulut Robot */
+.voice-bar {
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.voice-bar:hover,
+.voice-bar.is-plucked {
+  transform: scaleX(1.32) scaleY(1.15);
+  background: linear-gradient(180deg, #ffffff 0%, var(--nose-bg) 45%, var(--nose-deep) 100%) !important;
+  box-shadow:
+    0 0 18px var(--nose-bg),
+    inset 0 2px 4px rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 6. Easter Egg: Kacamata Hitam Pixel Clay 3D (Double-Click Alis atau Tekan Huruf G) */
+.pixel-sunglasses {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translate(-50%, -90px) scale(0.4) rotate(-12deg);
+  z-index: 32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.28s ease;
+}
+
+.robot-face.has-sunglasses .pixel-sunglasses {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1) rotate(0deg);
+}
+
+.sunglass-frame {
+  position: relative;
+  width: clamp(122px, 17.5vw, 178px);
+  height: clamp(64px, 9.5vw, 94px);
+  border-radius: 18px 18px 34px 34px;
+  background: linear-gradient(145deg, #1e293b 0%, #090d16 65%, #000000 100%);
+  border: 5px solid #ffffff;
+  box-shadow:
+    0 18px 32px rgba(0, 0, 0, 0.45),
+    inset 0 6px 10px rgba(255, 255, 255, 0.25),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.sunglass-glint {
+  position: absolute;
+  top: -10%;
+  left: 16%;
+  width: 18px;
+  height: 130%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.15));
+  transform: rotate(24deg);
+  box-shadow: 24px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.sunglass-bridge {
+  width: clamp(28px, 5vw, 68px);
+  height: 16px;
+  margin-inline: -4px;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+.clay-eyebrow {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ==================== DOCK KONTROL POJOK KANAN BAWAH (WAKE/SLEEP + SFX) ==================== */
+.bottom-right-controls {
+  position: fixed;
+  right: clamp(16px, 2.2vw, 28px);
+  bottom: clamp(16px, 2.2vh, 28px);
+  z-index: 130;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clay-mode-toggle,
+.clay-sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border-radius: 20px;
+  border: 3px solid #ffffff;
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  outline: none;
+  box-shadow:
+    0 14px 28px rgba(15, 23, 42, 0.25),
+    0 0 0 4px rgba(56, 189, 248, 0.22),
+    inset 0 4px 7px rgba(255, 255, 255, 0.22),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.65);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.25s ease;
+}
+
+.clay-mode-toggle:hover,
+.clay-sound-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 18px 34px rgba(15, 23, 42, 0.32),
+    0 0 0 6px rgba(56, 189, 248, 0.35),
+    inset 0 4px 7px rgba(255, 255, 255, 0.28),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.65);
+}
+
+.clay-mode-toggle:active,
+.clay-sound-toggle:active {
+  transform: scale(0.94);
+}
+
+/* Tombol Wake / Sleep (Light Mode vs Dark Mode) */
+.clay-mode-toggle {
+  background: linear-gradient(145deg, #ffffff 0%, #e2e8f0 100%);
+  color: #0f172a;
+  border-color: #ffffff;
+  box-shadow:
+    0 14px 26px rgba(15, 23, 42, 0.14),
+    inset 0 4px 7px rgba(255, 255, 255, 0.95),
+    inset 0 -5px 9px rgba(148, 163, 184, 0.35);
+}
+
+.mode-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fef08a 0%, #f59e0b 100%);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.8);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* State Ketika Mode SLEEP (Dark Mode Aktif) */
+.clay-mode-toggle.is-sleeping {
+  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  color: #bae6fd;
+  border-color: #38bdf8;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(56, 189, 248, 0.3),
+    inset 0 4px 7px rgba(255, 255, 255, 0.18),
+    inset 0 -5px 9px rgba(0, 0, 0, 0.7);
+}
+
+.clay-mode-toggle.is-sleeping .mode-indicator {
+  background: radial-gradient(circle at 35% 35%, #e0f2fe 0%, #38bdf8 100%);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.95);
+  transform: scale(0.92);
+}
+
+body.is-dark-sleep .clay-sound-toggle {
+  border-color: #334155;
+}
+
+.sound-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+
+.eq-bar {
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+  animation: pixelEqBounce 0.65s steps(4, end) infinite alternate;
+}
+
+.eq-bar:nth-child(2) {
+  animation-delay: -0.22s;
+}
+
+.eq-bar:nth-child(3) {
+  animation-delay: -0.44s;
+}
+
+@keyframes pixelEqBounce {
+  0% { height: 25%; }
+  100% { height: 100%; }
+}
+
+/* State ketika Sound OFF */
+.clay-sound-toggle.is-muted {
+  background: linear-gradient(145deg, #f1f5f9 0%, #cbd5e1 100%);
+  color: #475569;
+  box-shadow:
+    0 10px 20px rgba(15, 23, 42, 0.12),
+    inset 0 4px 6px rgba(255, 255, 255, 0.9),
+    inset 0 -5px 8px rgba(100, 116, 139, 0.3);
+}
+
+.clay-sound-toggle.is-muted .eq-bar {
+  animation: none;
+  height: 30%;
+  background: #64748b;
+  box-shadow: none;
+}
+
+/* Responsif */
+@media (max-width: 720px) {
   .eyes-row {
-    gap: 24px;
+    gap: 22px;
   }
 
-  .eye-rim {
-    padding: 6px;
+  .clay-drop-btn {
+    padding: 8px 12px;
+    border-radius: 18px;
+    gap: 7px;
   }
 
-  .mouth-screen {
-    padding: 8px 14px;
+  body:not(.gate-opened) .eyes-row .eye-unit:first-child {
+    transform: translate3d(-14vw, -16vh, 0) rotate(-14deg) scale(0.78);
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .robot-face,
-  .nose,
-  .eyelid {
-    transition-duration: 0.01ms !important;
+  body:not(.gate-opened) .eyes-row .eye-unit:last-child {
+    transform: translate3d(14vw, -16vh, 0) rotate(14deg) scale(0.78);
+  }
+
+  body:not(.gate-opened) .nose-wrap {
+    transform: translate3d(-18vw, 17vh, 0) rotate(18deg) scale(0.95);
+  }
+
+  body:not(.gate-opened) .mouth-wrap {
+    transform: translate3d(14vw, 17vh, 0) rotate(-12deg) scale(0.76);
   }
 }

@@ -3,80 +3,225 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muka Robot Interaktif</title>
+  <title>Hai gua icat — Interactive Clay Robot Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <main class="robot-face" id="robotFace" data-mood="normal" data-color="cyan" aria-label="Tampilan interaktif mata, hidung, dan mulut robot">
-    <!-- Logo di atas wajah robot -->
-    <img src="icraft-logo.png" alt="iCraft Logo" class="brand-logo">
+<body data-color="sky">
+  <!-- Gerbang Claymorphism Abstrak (Biru, Putih, Hitam) -->
+  <div class="abstract-clay-gate" id="circularGate" aria-label="Gerbang abstrak claymorphism pembuka portofolio icat">
+    <!-- 4 Keping Blob Abstrak Clay Raksasa (Putih, Biru, Hitam) yang Membelah -->
+    <div class="gate-blob-piece gate-blob-tl" aria-hidden="true"></div>
+    <div class="gate-blob-piece gate-blob-tr" aria-hidden="true"></div>
+    <div class="gate-blob-piece gate-blob-bl" aria-hidden="true"></div>
+    <div class="gate-blob-piece gate-blob-br" aria-hidden="true"></div>
 
-    <!-- Mata Robot -->
-    <section class="eyes-row" aria-label="Mata robot">
-      <div class="eye" id="eyeLeft" role="button" tabindex="0" aria-label="Mata kiri robot, klik untuk mengedip">
-        <div class="eye-rim">
-          <div class="eye-screen">
-            <div class="eye-grid" aria-hidden="true"></div>
-            <div class="pupil-rig" id="pupilLeft">
-              <div class="iris-ring">
-                <span class="reticle-tick tick-top"></span>
-                <span class="reticle-tick tick-right"></span>
-                <span class="reticle-tick tick-bottom"></span>
-                <span class="reticle-tick tick-left"></span>
-                <div class="pupil-core">
-                  <span class="pupil-glint"></span>
+    <!-- Blob Kubah Abstrak Tengah + Tombol Assemble -->
+    <div class="gate-center-blob" id="gateCenterBlob">
+      <div class="gate-tech-pill">CLAY.BOT // ASSEMBLE</div>
+      <h2 class="gate-title">ICAT</h2>
+      <p class="gate-sub">Komponen wajah siap dirakit</p>
+      <button type="button" class="gate-assemble-btn" id="gateEnterBtn">
+        <span class="assemble-led"></span>
+        <span>RAKIT ROBOT</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dekorasi Blob Clay Latar Belakang -->
+  <div class="bg-clay-world" aria-hidden="true">
+    <span class="bg-blob blob-1"></span>
+    <span class="bg-blob blob-2"></span>
+    <span class="bg-blob blob-3"></span>
+    <span class="bg-blob blob-4"></span>
+  </div>
+
+  <!-- Stage Portofolio 100vh -->
+  <div class="portfolio-viewport" id="portfolioViewport">
+    <!-- Area Tengah: Wajah Robot Claymorphism Cartoon -->
+    <main class="robot-stage" id="robotStage">
+      <div class="robot-face" id="robotFace" data-mood="thinking" data-color="sky" aria-label="Wajah robot kartun claymorphism interaktif">
+        <!-- Judul Sapaan -->
+        <div class="greeting-wrap">
+          <h1 class="brand-title">
+            Hai gua <span class="brand-highlight">icat</span>
+          </h1>
+          <p class="brand-subtitle">Creative Developer &amp; Interactive Toymaker</p>
+        </div>
+
+        <!-- Kepala / Wajah Clay Tanpa Kotak Kaku (Elemen Mengambang 3D) -->
+        <div class="clay-face-group" id="clayFaceGroup">
+          <!-- Antena Dekoratif + Jam Real-time & Mood Status + Bintang Pusing -->
+          <div class="clay-antenna" id="clayAntenna" title="Klik untuk ganti ekspresi, atau tarik bola antena">
+            <div class="antenna-hud-tag" id="antennaHudTag" aria-label="Jam lokal dan indikator mood robot">
+              <span class="hud-battery-dot" id="hudBatteryDot"></span>
+              <span class="hud-clock-text" id="hudClockText">00:00</span>
+              <span class="hud-mood-code" id="hudMoodCode">THK</span>
+            </div>
+
+            <span class="sleep-zzz" aria-hidden="true">
+              <span class="zzz-char z-1">Z</span>
+              <span class="zzz-char z-2">z</span>
+              <span class="zzz-char z-3">z</span>
+            </span>
+
+            <span class="dizzy-orbit" aria-hidden="true">
+              <span class="dizzy-ring-item d-1"></span>
+              <span class="dizzy-ring-item d-2"></span>
+              <span class="dizzy-ring-item d-3"></span>
+            </span>
+
+            <span class="antenna-ball" id="antennaBall"></span>
+            <span class="antenna-stem" id="antennaStem"></span>
+          </div>
+
+          <!-- Easter Egg: Kacamata Pixel 8-Bit (Tekan tombol G atau Double-Click Alis) -->
+          <div class="pixel-sunglasses" id="pixelSunglasses" aria-hidden="true">
+            <div class="sunglass-frame frame-left">
+              <span class="sunglass-glint"></span>
+            </div>
+            <div class="sunglass-bridge"></div>
+            <div class="sunglass-frame frame-right">
+              <span class="sunglass-glint"></span>
+            </div>
+          </div>
+
+          <!-- Baris Mata + Alis + Pipi -->
+          <section class="eyes-row" aria-label="Mata robot">
+            <!-- Mata Kiri -->
+            <div class="eye-unit">
+              <span class="clay-eyebrow eyebrow-left" aria-hidden="true"></span>
+              <div class="eye" id="eyeLeft" role="button" tabindex="0" aria-label="Mata kiri robot: Klik untuk menjatuhkan tombol proyek dan karya">
+                <span class="feature-badge badge-eye">Karya</span>
+                <div class="eye-rim">
+                  <div class="eye-screen">
+                    <div class="pupil-rig" id="pupilLeft">
+                      <div class="iris-ring">
+                        <div class="pupil-core">
+                          <span class="pupil-glint glint-lg"></span>
+                          <span class="pupil-glint glint-sm"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eyelid eyelid-top" aria-hidden="true"></div>
+                    <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
+                  </div>
                 </div>
               </div>
+              <span class="clay-cheek cheek-left" aria-hidden="true"></span>
             </div>
-            <div class="eyelid eyelid-top" aria-hidden="true"></div>
-            <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
+
+            <!-- Mata Kanan -->
+            <div class="eye-unit">
+              <span class="clay-eyebrow eyebrow-right" aria-hidden="true"></span>
+              <div class="eye" id="eyeRight" role="button" tabindex="0" aria-label="Mata kanan robot: Klik untuk menjatuhkan tombol eksperimen dan playground">
+                <span class="feature-badge badge-eye">Karya</span>
+                <div class="eye-rim">
+                  <div class="eye-screen">
+                    <div class="pupil-rig" id="pupilRight">
+                      <div class="iris-ring">
+                        <div class="pupil-core">
+                          <span class="pupil-glint glint-lg"></span>
+                          <span class="pupil-glint glint-sm"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eyelid eyelid-top" aria-hidden="true"></div>
+                    <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="clay-cheek cheek-right" aria-hidden="true"></span>
+            </div>
+          </section>
+
+          <!-- Hidung Robot -->
+          <div class="nose-wrap">
+            <button class="nose" id="robotNose" type="button" aria-label="Hidung robot: Klik untuk ganti warna dan menjatuhkan tombol tentang saya serta skill">
+              <span class="feature-badge badge-nose">Profil &amp; Skill</span>
+              <span class="nose-highlight" aria-hidden="true"></span>
+              <span class="nose-bridge">
+                <span class="nose-led" id="noseLed"></span>
+              </span>
+              <span class="nose-vents" aria-hidden="true">
+                <span class="vent"></span>
+                <span class="vent"></span>
+              </span>
+            </button>
+          </div>
+
+          <!-- Mulut Robot -->
+          <div class="mouth-wrap">
+            <!-- Shape Clay Hati 3D Saat Ekspresi Mencium (Kissing) -->
+            <div class="kiss-hearts" aria-hidden="true">
+              <span class="clay-heart heart-1"></span>
+              <span class="clay-heart heart-2"></span>
+              <span class="clay-heart heart-3"></span>
+            </div>
+
+            <button class="mouth" id="robotMouth" type="button" aria-label="Mulut robot: Klik untuk menjatuhkan tombol kontak dan sosial media" aria-pressed="true">
+              <span class="feature-badge badge-mouth">Kontak &amp; Sosmed</span>
+              <span class="mouth-rim">
+                <span class="mouth-screen">
+                  <span class="mouth-tongue" aria-hidden="true"></span>
+                  <span class="voice-bars" id="voiceBars" aria-hidden="true"></span>
+                </span>
+              </span>
+            </button>
           </div>
         </div>
       </div>
+    </main>
 
-      <div class="eye" id="eyeRight" role="button" tabindex="0" aria-label="Mata kanan robot, klik untuk mengedip">
-        <div class="eye-rim">
-          <div class="eye-screen">
-            <div class="eye-grid" aria-hidden="true"></div>
-            <div class="pupil-rig" id="pupilRight">
-              <div class="iris-ring">
-                <span class="reticle-tick tick-top"></span>
-                <span class="reticle-tick tick-right"></span>
-                <span class="reticle-tick tick-bottom"></span>
-                <span class="reticle-tick tick-left"></span>
-                <div class="pupil-core">
-                  <span class="pupil-glint"></span>
-                </div>
-              </div>
-            </div>
-            <div class="eyelid eyelid-top" aria-hidden="true"></div>
-            <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
-          </div>
-        </div>
+    <!-- Layer Tombol-Tombol Clay yang Jatuh Abstrak di Pinggir & Bawah (Tidak Menutupi Wajah) -->
+    <div class="dropped-buttons-layer" id="droppedLayer" aria-live="polite"></div>
+  </div>
+
+  <!-- Modal / Kartu Detail Claymorphism saat Button yang Jatuh Diklik -->
+  <div class="clay-modal-backdrop" id="clayModalBackdrop" hidden>
+    <article class="clay-modal-card" id="clayModalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <span class="modal-badge" id="modalBadge">Kategori</span>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup detail">X</button>
       </div>
-    </section>
+      <div class="modal-icon-hero" id="modalIcon">01</div>
+      <h2 class="modal-title" id="modalTitle">Judul Kartu</h2>
+      <p class="modal-desc" id="modalDesc">Deskripsi lengkap item portofolio.</p>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-DynamicContent" id="modalExtra"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </article>
+  </div>
 
-    <!-- Hidung Robot -->
-    <button class="nose" id="robotNose" type="button" aria-label="Hidung sensor robot, klik untuk ganti warna">
-      <span class="nose-bridge">
-        <span class="nose-led" id="noseLed"></span>
-      </span>
-      <span class="nose-vents" aria-hidden="true">
-        <span class="vent"></span>
-        <span class="vent"></span>
-      </span>
+  <!-- Shape Abstrak Peringatan Spam Click: SAKITT WOII!! -->
+  <div class="pain-alert-overlay" id="painAlertOverlay" aria-live="assertive" aria-hidden="true">
+    <div class="pain-abstract-blob">
+      <div class="pain-warning-logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M27.6 9.8C29.5 6.4 34.5 6.4 36.4 9.8L57.8 47.4C59.7 50.7 57.3 54.9 53.4 54.9H10.6C6.7 54.9 4.3 50.7 6.2 47.4L27.6 9.8Z" fill="#FEF08A" stroke="#7F1D1D" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M32 23V36" stroke="#7F1D1D" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="32" cy="45" r="3" fill="#7F1D1D"/>
+        </svg>
+      </div>
+      <div class="pain-alert-text">SAKITT WOII!!</div>
+    </div>
+  </div>
+
+  <!-- Dock Kontrol Pojok Kanan Bawah: Wake/Sleep (Light/Dark Mode) + SFX ON/OFF -->
+  <div class="bottom-right-controls" aria-label="Kontrol Mode Tidur dan Suara">
+    <button type="button" class="clay-mode-toggle" id="wakeSleepBtn" aria-pressed="false" aria-label="Ubah mode Wake (Light Mode) atau Sleep (Dark Mode)">
+      <span class="mode-indicator" aria-hidden="true"></span>
+      <span class="mode-label" id="wakeSleepLabel">WAKE</span>
     </button>
 
-    <!-- Mulut Robot -->
-    <button class="mouth" id="robotMouth" type="button" aria-label="Mulut robot, klik untuk mulai atau jeda bicara" aria-pressed="true">
-      <span class="mouth-rim">
-        <span class="mouth-screen">
-          <span class="mouth-grid" aria-hidden="true"></span>
-          <span class="voice-bars" id="voiceBars" aria-hidden="true"></span>
-        </span>
+    <button type="button" class="clay-sound-toggle" id="soundToggleBtn" aria-pressed="true" aria-label="Nyalakan atau matikan suara 8-bit pixel">
+      <span class="sound-eq" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
       </span>
+      <span class="sound-label" id="soundToggleLabel">SFX ON</span>
     </button>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
