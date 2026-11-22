@@ -1,0 +1,505 @@
+:root {
+  --bg: #ffffff;
+  --metal-dark: #161d29;
+  --metal-mid: #283347;
+  --metal-edge: #d8e1ec;
+  --screen-bg: #0a101b;
+  --shadow-soft: rgba(15, 23, 42, 0.12);
+  --shadow-deep: rgba(15, 23, 42, 0.22);
+
+  /* Warna Default (1. Cyan / Biru Elektrik) */
+  --accent: #00d8ff;
+  --accent-bright: #a5f6ff;
+  --accent-deep: #0284c7;
+  --accent-rgb: 0, 216, 255;
+  --screen-tint: #112238;
+
+  --look-x: 0;
+  --look-y: 0;
+}
+
+/* 5 Tema Warna Robot */
+.robot-face[data-color="cyan"] {
+  --accent: #00d8ff;
+  --accent-bright: #a5f6ff;
+  --accent-deep: #0284c7;
+  --accent-rgb: 0, 216, 255;
+  --screen-tint: #112238;
+}
+
+.robot-face[data-color="emerald"] {
+  --accent: #00e676;
+  --accent-bright: #b9f6ca;
+  --accent-deep: #059669;
+  --accent-rgb: 0, 230, 118;
+  --screen-tint: #0f291e;
+}
+
+.robot-face[data-color="amber"] {
+  --accent: #ffab00;
+  --accent-bright: #ffe57f;
+  --accent-deep: #d97706;
+  --accent-rgb: 255, 171, 0;
+  --screen-tint: #2b2110;
+}
+
+.robot-face[data-color="crimson"] {
+  --accent: #ff2a6d;
+  --accent-bright: #ff9ebb;
+  --accent-deep: #be123c;
+  --accent-rgb: 255, 42, 109;
+  --screen-tint: #2d121e;
+}
+
+.robot-face[data-color="violet"] {
+  --accent: #b388ff;
+  --accent-bright: #e6ceff;
+  --accent-deep: #7c3aed;
+  --accent-rgb: 179, 136, 255;
+  --screen-tint: #1f1433;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+}
+
+/* Hanya mata, hidung, dan mulut langsung di atas latar putih */
+.robot-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(22px, 4.2vh, 42px);
+  padding: 24px;
+  transform: translate3d(calc(var(--look-x) * 4px), calc(var(--look-y) * 3px), 0);
+  transition: transform 0.18s ease-out;
+}
+
+.brand-logo {
+  display: block;
+  max-width: clamp(110px, 16vw, 180px);
+  max-height: clamp(44px, 7.5vh, 76px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: clamp(4px, 1vh, 12px);
+  pointer-events: none;
+}
+
+/* ==================== MATA ROBOT ==================== */
+.eyes-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 7vw, 92px);
+}
+
+.eye {
+  position: relative;
+  width: clamp(118px, 19vw, 186px);
+  height: clamp(96px, 15.5vw, 150px);
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.eye:hover {
+  transform: scale(1.03);
+}
+
+.eye:active {
+  transform: scale(0.97);
+}
+
+.eye:focus-visible .eye-rim,
+.nose:focus-visible,
+.mouth:focus-visible .mouth-rim {
+  box-shadow:
+    0 0 0 4px #ffffff,
+    0 0 0 7px var(--accent),
+    0 14px 28px var(--shadow-soft);
+}
+
+.eye-rim {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 36% / 44%;
+  background: linear-gradient(145deg, #2d384d 0%, var(--metal-dark) 58%, #0d121b 100%);
+  border: 2px solid var(--metal-edge);
+  box-shadow:
+    0 16px 32px var(--shadow-soft),
+    0 4px 10px var(--shadow-deep),
+    inset 0 2px 3px rgba(255, 255, 255, 0.14);
+  transition: border-radius 0.35s ease, box-shadow 0.25s ease;
+}
+
+.eye-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 33% / 41%;
+  background: radial-gradient(circle at 50% 42%, var(--screen-tint) 0%, var(--screen-bg) 72%, #05080f 100%);
+  overflow: hidden;
+  box-shadow: inset 0 6px 18px rgba(0, 0, 0, 0.78);
+}
+
+.eye-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--accent-rgb), 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.06) 1px, transparent 1px);
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+.pupil-rig {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+
+.iris-ring {
+  position: relative;
+  width: 54%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3.5px solid var(--accent);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--accent-rgb), 0.28) 0%,
+    rgba(var(--accent-rgb), 0.08) 58%,
+    rgba(var(--accent-rgb), 0.02) 100%
+  );
+  box-shadow:
+    0 0 18px rgba(var(--accent-rgb), 0.55),
+    inset 0 0 14px rgba(var(--accent-rgb), 0.45);
+  display: grid;
+  place-items: center;
+  transition: transform 0.25s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.reticle-tick {
+  position: absolute;
+  background: var(--accent-bright);
+  border-radius: 2px;
+  opacity: 0.85;
+  transition: background-color 0.2s ease;
+}
+
+.tick-top,
+.tick-bottom {
+  width: 2px;
+  height: 7px;
+}
+
+.tick-top {
+  top: -5px;
+}
+
+.tick-bottom {
+  bottom: -5px;
+}
+
+.tick-left,
+.tick-right {
+  width: 7px;
+  height: 2px;
+}
+
+.tick-left {
+  left: -5px;
+}
+
+.tick-right {
+  right: -5px;
+}
+
+.pupil-core {
+  position: relative;
+  width: 48%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 35%, #ffffff 0%, var(--accent-bright) 32%, var(--accent) 70%, var(--accent-deep) 100%);
+  box-shadow: 0 0 16px var(--accent);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pupil-glint {
+  position: absolute;
+  top: 16%;
+  left: 20%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.95;
+}
+
+/* Kelopak mata mekanis */
+.eyelid {
+  position: absolute;
+  left: -4%;
+  width: 108%;
+  height: 56%;
+  background: linear-gradient(180deg, #1b2434 0%, #101622 100%);
+  z-index: 4;
+  transition: transform 0.11s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+  pointer-events: none;
+}
+
+.eyelid-top {
+  top: 0;
+  border-bottom: 2px solid rgba(var(--accent-rgb), 0.5);
+  transform: translateY(-102%);
+}
+
+.eyelid-bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, #1b2434 0%, #101622 100%);
+  border-top: 2px solid rgba(var(--accent-rgb), 0.4);
+  transform: translateY(102%);
+}
+
+/* State mengedip */
+.eye.is-blinking .eyelid-top {
+  transform: translateY(-2%);
+}
+
+.eye.is-blinking .eyelid-bottom {
+  transform: translateY(2%);
+}
+
+/* ==================== HIDUNG ROBOT ==================== */
+.nose {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: clamp(44px, 6.2vw, 60px);
+  padding: 10px 8px 9px;
+  border-radius: 16px 16px 24px 24px;
+  background: linear-gradient(155deg, #2d384d 0%, var(--metal-dark) 62%, #0e141f 100%);
+  border: 2px solid var(--metal-edge);
+  box-shadow:
+    0 10px 20px var(--shadow-soft),
+    0 3px 6px var(--shadow-deep),
+    inset 0 2px 2px rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  outline: none;
+  transform: translate3d(calc(var(--look-x) * 6px), calc(var(--look-y) * 4px), 0);
+  transition: transform 0.18s ease-out, box-shadow 0.2s ease;
+}
+
+.nose:hover {
+  box-shadow:
+    0 12px 24px var(--shadow-soft),
+    0 0 0 3px rgba(var(--accent-rgb), 0.35);
+}
+
+.nose:active {
+  transform: translate3d(calc(var(--look-x) * 6px), calc(var(--look-y) * 4px), 0) scale(0.92);
+}
+
+.nose-bridge {
+  width: 10px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--screen-bg);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.85);
+}
+
+.nose-led {
+  width: 4px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  opacity: 0.7;
+  transition: opacity 0.15s ease, transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nose-vents {
+  display: flex;
+  gap: 8px;
+}
+
+.vent {
+  width: 7px;
+  height: 4px;
+  border-radius: 999px;
+  background: #090e17;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ==================== MULUT ROBOT ==================== */
+.mouth {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: clamp(190px, 34vw, 310px);
+  height: clamp(64px, 10.5vw, 96px);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mouth:hover {
+  transform: scale(1.025);
+}
+
+.mouth:active {
+  transform: scale(0.98);
+}
+
+.mouth-rim {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  border-radius: 999px;
+  background: linear-gradient(155deg, #2d384d 0%, var(--metal-dark) 58%, #0d121b 100%);
+  border: 2px solid var(--metal-edge);
+  box-shadow:
+    0 16px 32px var(--shadow-soft),
+    0 4px 10px var(--shadow-deep),
+    inset 0 2px 3px rgba(255, 255, 255, 0.14);
+  transition: border-radius 0.3s ease, transform 0.12s ease;
+}
+
+.mouth-screen {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at 50% 50%, var(--screen-tint) 0%, var(--screen-bg) 78%, #05080f 100%);
+  overflow: hidden;
+  box-shadow: inset 0 6px 16px rgba(0, 0, 0, 0.82);
+}
+
+.mouth-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--accent-rgb), 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.06) 1px, transparent 1px);
+  background-size: 10px 10px;
+  pointer-events: none;
+}
+
+.voice-bars {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(5px, 0.9vw, 8px);
+  width: 100%;
+  height: 100%;
+}
+
+.voice-bar {
+  flex: 1;
+  height: 16%;
+  min-height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-bright) 0%, var(--accent) 50%, var(--accent-deep) 100%);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.55);
+  will-change: height, opacity;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ==================== EKSPRESI / MOOD ==================== */
+/* Mood: Senang (Happy) */
+.robot-face[data-mood="happy"] .eye:not(.is-blinking) .eyelid-bottom {
+  transform: translateY(58%);
+  border-radius: 50% 50% 0 0 / 35% 35% 0 0;
+}
+
+.robot-face[data-mood="happy"] .iris-ring {
+  transform: scale(1.06);
+}
+
+/* Mood: Berpikir (Thinking) */
+.robot-face[data-mood="thinking"] #eyeLeft:not(.is-blinking) .eyelid-top {
+  transform: translateY(-56%);
+}
+
+.robot-face[data-mood="thinking"] #eyeRight:not(.is-blinking) .eyelid-top {
+  transform: translateY(-76%);
+}
+
+.robot-face[data-mood="thinking"] #eyeRight:not(.is-blinking) .eyelid-bottom {
+  transform: translateY(72%);
+}
+
+/* Mood: Terkejut (Surprised) */
+.robot-face[data-mood="surprised"] .iris-ring {
+  transform: scale(0.84);
+}
+
+.robot-face[data-mood="surprised"] .pupil-core {
+  transform: scale(0.82);
+}
+
+.robot-face[data-mood="surprised"] .mouth-rim {
+  border-radius: 28px;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 480px) {
+  .robot-face {
+    gap: 24px;
+  }
+
+  .eyes-row {
+    gap: 24px;
+  }
+
+  .eye-rim {
+    padding: 6px;
+  }
+
+  .mouth-screen {
+    padding: 8px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-face,
+  .nose,
+  .eyelid {
+    transition-duration: 0.01ms !important;
+  }
+}

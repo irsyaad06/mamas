@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muka Robot Interaktif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="robot-face" id="robotFace" data-mood="normal" data-color="cyan" aria-label="Tampilan interaktif mata, hidung, dan mulut robot">
+    <!-- Logo di atas wajah robot -->
+    <img src="icraft-logo.png" alt="iCraft Logo" class="brand-logo">
+
+    <!-- Mata Robot -->
+    <section class="eyes-row" aria-label="Mata robot">
+      <div class="eye" id="eyeLeft" role="button" tabindex="0" aria-label="Mata kiri robot, klik untuk mengedip">
+        <div class="eye-rim">
+          <div class="eye-screen">
+            <div class="eye-grid" aria-hidden="true"></div>
+            <div class="pupil-rig" id="pupilLeft">
+              <div class="iris-ring">
+                <span class="reticle-tick tick-top"></span>
+                <span class="reticle-tick tick-right"></span>
+                <span class="reticle-tick tick-bottom"></span>
+                <span class="reticle-tick tick-left"></span>
+                <div class="pupil-core">
+                  <span class="pupil-glint"></span>
+                </div>
+              </div>
+            </div>
+            <div class="eyelid eyelid-top" aria-hidden="true"></div>
+            <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eye" id="eyeRight" role="button" tabindex="0" aria-label="Mata kanan robot, klik untuk mengedip">
+        <div class="eye-rim">
+          <div class="eye-screen">
+            <div class="eye-grid" aria-hidden="true"></div>
+            <div class="pupil-rig" id="pupilRight">
+              <div class="iris-ring">
+                <span class="reticle-tick tick-top"></span>
+                <span class="reticle-tick tick-right"></span>
+                <span class="reticle-tick tick-bottom"></span>
+                <span class="reticle-tick tick-left"></span>
+                <div class="pupil-core">
+                  <span class="pupil-glint"></span>
+                </div>
+              </div>
+            </div>
+            <div class="eyelid eyelid-top" aria-hidden="true"></div>
+            <div class="eyelid eyelid-bottom" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidung Robot -->
+    <button class="nose" id="robotNose" type="button" aria-label="Hidung sensor robot, klik untuk ganti warna">
+      <span class="nose-bridge">
+        <span class="nose-led" id="noseLed"></span>
+      </span>
+      <span class="nose-vents" aria-hidden="true">
+        <span class="vent"></span>
+        <span class="vent"></span>
+      </span>
+    </button>
+
+    <!-- Mulut Robot -->
+    <button class="mouth" id="robotMouth" type="button" aria-label="Mulut robot, klik untuk mulai atau jeda bicara" aria-pressed="true">
+      <span class="mouth-rim">
+        <span class="mouth-screen">
+          <span class="mouth-grid" aria-hidden="true"></span>
+          <span class="voice-bars" id="voiceBars" aria-hidden="true"></span>
+        </span>
+      </span>
+    </button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
